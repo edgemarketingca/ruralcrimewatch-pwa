@@ -3,13 +3,15 @@ import { menu, socials } from '~/constants'
 
 const route = useRoute()
 
+const { collapsed } = useLayout()
+
 const resize = computed(() => {
   if (route.name === 'index')
     return false
   return true
 })
 
-const collapsed = ref(false)
+// const collapsed = ref(false)
 </script>
 
 
@@ -21,7 +23,7 @@ const collapsed = ref(false)
   >
      <div class="flex flex-col justify-between h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-black border-r border-gray-400/20">
       <button class="absolute right-2 top-2 text-white" @click="collapsed = !collapsed">
-        <Icon :name="collapsed ? 'ph:circle' : 'ph:circle-duotone'" />
+        <Icon :name="collapsed ? 'ph:circle' : 'carbon:circle-filled'" />
       </button>
       <div>
         <NuxtLink title="app title" class="flex justify-center" to="/">
