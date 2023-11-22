@@ -4,11 +4,11 @@ export interface NewsRSS {
       version: string
       'xmlns:slash': string
     },
-    channel: News[],
+    channel: Channel[],
   },
 }
 
-export interface News {
+export interface Channel {
   title: string[]
   description: string[]
   image: {
@@ -24,6 +24,14 @@ export interface News {
     guid: string[]
     'slash:comments': string[]
   }[],
+}
+
+export interface Article {
+  title: string
+  thumbnail: string
+  description: string
+  link: string
+  date: string
 }
 
 export interface Menu {

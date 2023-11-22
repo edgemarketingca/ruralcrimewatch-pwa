@@ -1,12 +1,25 @@
 <script setup lang="ts">
-import type { NewsRSS, News } from '~/types'
+import type { NewsRSS, Article, Channel } from '~/types'
 import { parseString } from 'xml2js'
 
 const { data, pending } = await useFetch('https://www.ruralcrimewatch.ab.ca/rss/bulletinboard', {
   lazy: true,
   transform: (xml: string) => {
-    let result: News | undefined
-    parseString(xml, (err, res: NewsRSS) => result = res?.rss?.channel?.[0])
+    let raw: Channel | undefined
+    let result: Article[] = []
+    
+    parseString(xml, (err, res: NewsRSS) => raw = res?.rss?.channel?.[0])
+
+    raw?.item.forEach((item) => {
+      result.push({
+        title: item.title[0],
+        thumbnail: getImage(item.description[0]),
+        description: getDescription(item.description[0]),
+        link: item.link[0],
+        date: item.pubDate[0],
+      })
+    })
+
     return result
   }
 })
@@ -23,16 +36,7 @@ function getImage(text: string) {
 }
 
 function getDescription(text: string) {
-  const imgRegex = /<img[^>]+>/;
-  const withoutImg = text.replace(imgRegex, '');
-  const descRegex = /<p>(.*?)<\/p>/;
-  const match = withoutImg.match(descRegex);
-
-  if (match && match[1]) {
-    return match[1];
-  } else {
-    return "Description text not found";
-  }
+  return text.replace(/<p><img src=".*?" \/><\/p>/g, '')
 }
 </script>
 
@@ -62,26 +66,7 @@ function getDescription(text: string) {
       </div>
     </template>
     <template v-else>
-      <NuxtLink
-        v-for="article of data?.item"
-        :key="article.link[0]"
-        :to="article.link[0]"
-        class="group max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-neutral-900 dark:border-neutral-800"
-      >
-        <img class="h-60 w-full object-cover group-hover:scale-90 group-hover:rounded-xl rounded-t-lg transition-all" :src="getImage(article.description[0])" alt="" />
-        <div class="p-5">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {{ article.title[0] }}
-          </h5>
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            {{ getDescription(article.description[0]) }}
-          </p>
-          <button class="inline-flex gap-2 items-center px-3 py-2 text-sm font-medium text-center text-black bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-400 dark:hover:bg-yellow-400 dark:focus:ring-yellow-800">
-            Read more
-            <Icon name="ph:arrow-right" />
-          </button>
-        </div>
-      </NuxtLink>
+      <AppCard v-for="item of data" :key="item.link" :item="item" />
     </template>
   </main>
 </template>
