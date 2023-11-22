@@ -68,25 +68,18 @@ function getDescription(text: string) {
         :to="article.link[0]"
         class="group max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-neutral-900 dark:border-neutral-800"
       >
-        <img class="group-hover:scale-90 group-hover:rounded-xl rounded-t-lg transition-all" :src="getImage(article.description[0])" alt="" />
+        <img class="h-60 w-full object-cover group-hover:scale-90 group-hover:rounded-xl rounded-t-lg transition-all" :src="getImage(article.description[0])" alt="" />
         <div class="p-5">
-          <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {{ article.title[0] }}
-            </h5>
-          </a>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {{ article.title[0] }}
+          </h5>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
             {{ getDescription(article.description[0]) }}
           </p>
-          <a href="#"
-            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-400 dark:hover:bg-yellow-400 dark:focus:ring-yellow-800">
+          <button class="inline-flex gap-2 items-center px-3 py-2 text-sm font-medium text-center text-black bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-400 dark:hover:bg-yellow-400 dark:focus:ring-yellow-800">
             Read more
-            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-              viewBox="0 0 14 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M1 5h12m0 0L9 1m4 4L9 9" />
-            </svg>
-          </a>
+            <Icon name="ph:arrow-right" />
+          </button>
         </div>
       </NuxtLink>
     </template>
