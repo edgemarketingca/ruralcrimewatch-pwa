@@ -1,5 +1,6 @@
 {
-  "name": "nuxt-app",
+  "name": "rural-crime-watch-pwa",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
