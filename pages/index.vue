@@ -37,7 +37,7 @@ function getDescription(text: string) {
 </script>
 
 <template>
-  <main class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 place-items-center">
+  <main class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 place-items-center items-stretch">
     <template v-if="pending">
       <div
         v-for="item of 10"
