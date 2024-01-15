@@ -53,7 +53,7 @@ const selected = ref<number | undefined>()
     <template v-for="item, index of items" :key="index">
       <h2 id="accordion-open-heading-1">
         <button type="button"
-          class="flex items-center justify-between w-full p-5 font-medium text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200/0 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900/50 gap-3"
+          class="flex items-center justify-between w-full p-5 font-medium text-gray-500 border border-gray-300 focus:ring-4 focus:ring-gray-200/0 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900/50 gap-3"
           :class="[
             items.length - 1 === index ? 'border-b' : 'border-b-0',
             { 'rounded-t-xl': index === 0 },
@@ -75,7 +75,7 @@ const selected = ref<number | undefined>()
       </h2>
       <div id="accordion-open-body-1" :class="selected === index ? '' : 'hidden'" aria-labelledby="accordion-open-heading-1">
         <div
-          class="dark:text-white p-5 border border-gray-200 dark:border-gray-700 dark:bg-neutral-900"
+          class="dark:text-white p-5 border border-gray-300 dark:border-gray-700 dark:bg-neutral-900"
           :class="[
             items.length - 1 === index && selected === index ? 'border-b border-t-0 rounded-b-xl' : 'border-b-0',
           ]"
