@@ -10,8 +10,6 @@ const resize = computed(() => {
     return false
   return true
 })
-
-// const collapsed = ref(false)
 </script>
 
 
@@ -36,20 +34,11 @@ const resize = computed(() => {
         <div class="border-t border-gray-400/30 my-4" />
         <AppNav :items="socials" :collapsed="collapsed">
           <li>
-              <AppColorMode class="w-full flex items-center p-2 !text-gray-900 dark:!text-white rounded-lg hover:bg-yellow-400 hover:text-black  transition">
-                <span class="capitalize ms-3">
+              <AppColorMode class="w-full flex items-center p-2 !text-gray-900 dark:!text-white rounded-lg hover:bg-yellow-400 hover:text-black transition" :class="{ 'justify-center': collapsed }">
+                <span v-if="!collapsed" class="capitalize ms-3">
                   {{ $colorMode.preference }}
                 </span>
               </AppColorMode>
-             <!-- <button
-               title="Color Mode"
-               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-yellow-400 hover:text-black transition"
-             >
-                <Icon class="w-6 h-6" name="item.icon" />
-                <span v-if="!collapsed" class="ms-3">
-                 {{ item.name }}
-                </span>
-             </button> -->
           </li>
         </AppNav>
       </div>

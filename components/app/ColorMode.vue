@@ -7,7 +7,6 @@ function toggleMode() {
   const next = (index + 1) % values.length
   colorMode.preference = values[next]
 }
-
 </script>
 
 <template>
