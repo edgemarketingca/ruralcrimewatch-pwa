@@ -7,11 +7,11 @@
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
       <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
         © {{ new Date().getFullYear() }}
-        <NuxtLink title="Alberta Provincial Rural Crime Watch Association" :to="{ name: 'index' }" class="text-white hover:underline">
+        <NuxtLink title="Alberta Provincial Rural Crime Watch Association" :to="{ name: 'index' }" class="dark:text-white hover:underline">
           APRCWA
         </NuxtLink>
         | Developed by
-        <NuxtLink to="https://www.edgemarketing.ca/" target="_blank" class="text-white hover:underline">
+        <NuxtLink to="https://www.edgemarketing.ca/" target="_blank" class="dark:text-white hover:underline">
           EDGE Marketing & Design Inc.
         </NuxtLink>
       </span>
