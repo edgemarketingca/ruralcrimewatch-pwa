@@ -20,7 +20,7 @@ const resize = computed(() => {
     aria-label="Sidebar"
   >
      <div class="flex flex-col justify-between h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-black border-r border-gray-400/20">
-      <button class="absolute right-2 top-2 text-white" @click="collapsed = !collapsed">
+      <button class="absolute right-2 top-2 dark:text-white" @click="collapsed = !collapsed">
         <Icon :name="collapsed ? 'ph:circle' : 'carbon:circle-filled'" />
       </button>
       <div>
