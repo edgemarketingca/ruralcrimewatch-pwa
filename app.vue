@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useWindowScroll } from '@vueuse/core'
+
+const { y } = useWindowScroll()
 const { collapsed } = useLayout()
 </script>
 
@@ -20,7 +23,22 @@ const { collapsed } = useLayout()
       <AppFooter />
     </div>
 
+    <Transition name="fade">
+      <AppScrollToTop v-if="y > 27" />
+    </Transition>
+
   </Body>
 
   </Html>
 </template>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.4s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
