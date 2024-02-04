@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  
+
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
@@ -29,8 +29,8 @@ export default defineNuxtConfig({
   app: {
     keepalive: true,
   },
-  
+
   devtools: {
     enabled: true,
-  }
+  },
 })

@@ -30,11 +30,12 @@ const items = [
 </script>
 
 <template>
-  <main class="grid grid-cols-2 gap-8">
+  <main class="grid lg:grid-cols-2 grid-cols-1 gap-8">
     <div
       v-for="item of items"
       :key="item.title"
-      class="group flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-neutral-900 dark:hover:bg-neutral-800 hover:!border-primary">
+      class="group flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-neutral-900 dark:hover:bg-neutral-800 hover:!border-primary"
+    >
       <img
         class="object-cover w-full rounded-t-lg h-96 md:h-48 md:w-48 md:rounded-none md:rounded-s-lg group-hover:scale-90 group-hover:rounded-xl transition-all"
         :src="item.thumbnail"

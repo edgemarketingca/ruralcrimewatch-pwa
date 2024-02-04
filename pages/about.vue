@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { version, name } from '~/package.json'
+import { version } from '~/package.json'
 </script>
 
 <template>

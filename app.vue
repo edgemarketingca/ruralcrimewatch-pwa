@@ -7,28 +7,24 @@ const { collapsed } = useLayout()
 
 <template>
   <Html lang="en">
+    <Body class="bg-white dark:bg-black">
+      <NuxtLoadingIndicator />
 
-  <Body class="bg-white dark:bg-black">
+      <AppHeader />
+      <AppSidebar />
+      <AppBottomBar />
 
-    <NuxtLoadingIndicator />
-
-    <AppHeader />
-    <AppSidebar />
-    <AppBottomBar />
-
-    <div class="relative min-h-screen bg-gray-200 dark:bg-neutral-950" :class="collapsed ? 'sm:ml-24' : 'sm:ml-64'">
-      <div class="p-8 pb-20 sm:mt-0 mt-16 sm:mb-0 mb-16">
-        <NuxtPage />
+      <div class="relative min-h-screen bg-gray-200 dark:bg-neutral-950" :class="collapsed ? 'sm:ml-24' : 'sm:ml-64'">
+        <div class="p-8 pb-20 sm:mt-0 mt-16 sm:mb-0 mb-16">
+          <NuxtPage />
+        </div>
+        <AppFooter />
       </div>
-      <AppFooter />
-    </div>
 
-    <Transition name="fade">
-      <AppScrollToTop v-if="y > 27" />
-    </Transition>
-
-  </Body>
-
+      <Transition name="fade">
+        <AppScrollToTop v-if="y > 27" />
+      </Transition>
+    </Body>
   </Html>
 </template>
 

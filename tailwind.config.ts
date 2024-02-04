@@ -8,7 +8,7 @@ export default <Partial<Config>>{
         primary: '#F7CD46',
       },
       zIndex: {
-        '99': '99',
+        99: '99',
       },
     },
   },

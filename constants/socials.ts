@@ -1,8 +1,13 @@
 export const socials = [
   {
-    name: 'Twitter',
-    icon: 'ph:twitter-logo-duotone',
-    to: 'https://twitter.com/AB_CrimeWatch',
+    name: 'Youtube',
+    icon: 'ph:youtube-logo-duotone',
+    to: 'https://www.youtube.com/channel/UCYDRG7rdEsKj2LJGgDOhmvw',
+  },
+  {
+    name: 'Instagram',
+    icon: 'ph:instagram-logo-duotone',
+    to: 'https://instagram.com/',
   },
   {
     name: 'Facebook',

@@ -3,9 +3,9 @@ export interface NewsRSS {
     $: {
       version: string
       'xmlns:slash': string
-    },
-    channel: Channel[],
-  },
+    }
+    channel: Channel[]
+  }
 }
 
 export interface Channel {
@@ -23,7 +23,7 @@ export interface Channel {
     link: string[]
     guid: string[]
     'slash:comments': string[]
-  }[],
+  }[]
 }
 
 export interface Article {
