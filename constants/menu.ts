@@ -1,22 +1,24 @@
-export const menu = [
+import type { Menu } from "~/types";
+
+export const menu: Menu[] = [
   {
-    name: 'Home',
-    icon: 'ph:newspaper-duotone',
-    to: '/',
+    title: 'Home',
+    icon: 'ph:house-duotone',
+    _path: '/',
   },
   {
-    name: 'RCMP Boundary Map',
+    title: 'RCMP Crime Map',
     icon: 'ph:map-trifold-duotone',
-    to: '/map',
+    _path: '/map',
   },
   {
-    name: 'Social Services',
-    icon: 'ph:hammer-duotone',
-    to: '/social-services',
+    title: 'Associations',
+    icon: 'ph:users-duotone',
+    _path: '/associations',
   },
   {
-    name: 'Resources',
+    title: 'Resources',
     icon: 'ph:globe-hemisphere-west-duotone',
-    to: '/resources',
+    _path: '/resources',
   },
 ]

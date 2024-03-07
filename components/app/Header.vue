@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { menu, socials } from '~/constants'
+import { socials } from '~/constants'
 
+const { menus } = await useMenu()
 const open = ref(false)
 </script>
 
@@ -11,9 +12,9 @@ const open = ref(false)
         <img class="h-14" src="/logo.png">
       </NuxtLink>
       <div class="flex items-center gap-4">
-        <button v-for="item of socials" :key="item.name">
+        <NuxtLink v-for="item of socials" :key="item.title" :to="item._path">
           <Icon class="w-6 h-6 text-white" :name="item.icon" />
-        </button>
+        </NuxtLink>
         <AppColorMode />
         <button
           class="text-white"
@@ -23,6 +24,6 @@ const open = ref(false)
         </button>
       </div>
     </div>
-    <AppNav v-show="open" :items="menu" class="space-y-2 pb-4 pt-4 mt-4 border-t border-gray-400/20" />
+    <AppNav v-show="open" :items="menus" class="space-y-2 pb-4 pt-4 mt-4 border-t border-gray-400/20" />
   </nav>
 </template>

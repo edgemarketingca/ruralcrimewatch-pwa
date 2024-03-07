@@ -3,6 +3,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    // '@vite-pwa/nuxt',
+    '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-icon',
   ],
@@ -20,6 +22,10 @@ export default defineNuxtConfig({
     storageKey: 'color-mode',
     hid: 'color__mode__script',
     globalName: '__COLOR_MODE__',
+  },
+
+  content: {
+    documentDriven: true,
   },
 
   icon: {

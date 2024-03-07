@@ -35,7 +35,7 @@ export interface Article {
 }
 
 export interface Menu {
-  name: string
+  title: string
+  _path: string
   icon: string
-  to: string
 }

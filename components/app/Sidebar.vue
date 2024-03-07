@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { menu, socials } from '~/constants'
+import { socials } from '~/constants'
 
 const route = useRoute()
 
@@ -10,6 +10,8 @@ const resize = computed(() => {
     return false
   return true
 })
+
+const { menus } = await useMenu()
 </script>
 
 <template>
@@ -23,11 +25,14 @@ const resize = computed(() => {
         <Icon :name="collapsed ? 'ph:circle' : 'carbon:circle-filled'" />
       </button>
       <div>
+        <!-- <span class="text-white">
+          {{ crime }}
+        </span> -->
         <NuxtLink title="app title" class="flex justify-center" to="/">
           <img :width="collapsed ? 50 : resize ? 70 : 110" class="transition-all" src="/logo.png">
         </NuxtLink>
         <div class="border-t border-gray-400/30 my-4" />
-        <AppNav class="space-y-2" :items="menu" :collapsed="collapsed" />
+        <AppNav class="space-y-2" :items="menus" :collapsed="collapsed" />
       </div>
       <div>
         <div class="border-t border-gray-400/30 my-4" />

@@ -3,5 +3,5 @@
 </script>
 
 <template>
-  <Layout />
+  <AppMap class="h-screen" />
 </template>

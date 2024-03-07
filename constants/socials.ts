@@ -1,17 +1,19 @@
-export const socials = [
+import type { Menu } from "~/types";
+
+export const socials: Menu[] = [
   {
-    name: 'Youtube',
+    title: 'Youtube',
     icon: 'ph:youtube-logo-duotone',
-    to: 'https://www.youtube.com/channel/UCYDRG7rdEsKj2LJGgDOhmvw',
+    _path: 'https://www.youtube.com/channel/UCYDRG7rdEsKj2LJGgDOhmvw',
   },
   {
-    name: 'Instagram',
+    title: 'Instagram',
     icon: 'ph:instagram-logo-duotone',
-    to: 'https://instagram.com/',
+    _path: 'https://www.instagram.com/ab_crimewatch/',
   },
   {
-    name: 'Facebook',
+    title: 'Facebook',
     icon: 'ph:facebook-logo-duotone',
-    to: 'https://www.facebook.com/albertaprovincialruralcrimewatch',
+    _path: 'https://www.facebook.com/albertaprovincialruralcrimewatch',
   },
 ]
