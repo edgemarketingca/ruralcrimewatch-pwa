@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
     // '@vite-pwa/nuxt',
+    '@nuxthq/studio',
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-icon',
