@@ -1,12 +1,12 @@
 import { menu } from '~/constants'
 
 export async function useMenu() {
-  const { data: crime } = await useAsyncData('crime', () => queryContent('/crime/').where({ _dir: 'crime' }).find())
+  const { data } = await useAsyncData('navigation', () => queryContent('/').where({ nav: true }).find())
 
   const menus = computed(() => {
     return [
       ...menu,
-      ...crime.value
+      ...data.value ?? [],
     ]
   })
   return {

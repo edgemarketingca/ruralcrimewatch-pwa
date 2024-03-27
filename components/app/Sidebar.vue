@@ -36,12 +36,12 @@ const { menus } = await useMenu()
       </div>
       <div>
         <div class="border-t border-gray-400/30 my-4" />
-        <AppNav class="grid grid-cols-1 items-center justify-center gap-2" :items="socials" :collapsed="collapsed">
+        <AppNav class="grid items-center justify-center gap-2 place-items-center" :class="collapsed ? 'grid-cols-1' : 'grid-cols-5'" :items="socials" :collapsed="true">
           <li>
             <AppColorMode class="w-full flex items-center p-2 !text-gray-900 dark:!text-white rounded-lg hover:bg-yellow-400 hover:text-black dark:hover:!text-black transition" :class="{ 'justify-center': collapsed }">
-              <span v-if="!collapsed" class="capitalize ms-3">
+              <!-- <span v-if="!collapsed" class="capitalize ms-3">
                 {{ $colorMode.preference }}
-              </span>
+              </span> -->
             </AppColorMode>
           </li>
         </AppNav>

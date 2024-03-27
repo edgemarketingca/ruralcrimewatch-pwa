@@ -16,4 +16,9 @@ export const socials: Menu[] = [
     icon: 'ph:facebook-logo-duotone',
     _path: 'https://www.facebook.com/albertaprovincialruralcrimewatch',
   },
+  {
+    title: 'Website',
+    icon: 'ph:globe-duotone',
+    _path: 'https://www.ruralcrimewatch.ab.ca',
+  },
 ]

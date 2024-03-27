@@ -20,9 +20,9 @@ const { page, toc } = useContent()
       <ContentRenderer :value="page" :key="page._id">
         <div :class="toc.links.length ? 'col-span-10' : 'col-span-12'">
           <img class="w-full h-[30rem] object-cover rounded-lg mb-4" :src="page.image" :alt="page.title" />
-          <h1>
+          <!-- <h1>
             {{ page.title }}
-          </h1>
+          </h1> -->
           <ContentRendererMarkdown :value="page" />
         </div>
       </ContentRenderer>
@@ -90,12 +90,18 @@ const { page, toc } = useContent()
     font-weight: 500;
     margin-bottom: 1rem;
   }
+  p + p {
+    margin-bottom: 1rem;
+  }
   p {
     font-size: 1rem;
     font-weight: 400;
-    margin-bottom: 1rem;
-    &:last-child {
-      margin-bottom: 0;
+  }
+  ul {
+    list-style: disc;
+    padding-left: 1rem;
+    li {
+      margin-bottom: 0.5rem;
     }
   }
 }

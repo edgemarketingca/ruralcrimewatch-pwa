@@ -60,9 +60,13 @@ const { data: crime } = await useAsyncData('crime', () => queryContent('/crime/'
       <div class="absolute bg-primary p-4 rounded-lg z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">
         Click to view map
       </div>
-      <AppMap class="h-80 group-hover:opacity-30 pointer-events-none transition-all group-hover:!border-primary" />
+      <div class="w-full h-full bg-cover rounded-xl opacity-40" style="background-image: url(https://cdn.hswstatic.com/gif/maps.jpg);" />
+      <!-- <AppMap class="h-80 group-hover:opacity-30 pointer-events-none transition-all group-hover:!border-primary" /> -->
     </NuxtLink>
-    <NuxtLink class="relative col-span-3 grid w-full h-72 flex-col items-end justify-center overflow-hidden rounded-xl bg-neutral-900 bg-clip-border text-center hover:border border-red-600">
+    <NuxtLink
+      class="relative col-span-3 grid w-full h-72 flex-col items-end justify-center overflow-hidden rounded-xl bg-neutral-900 bg-clip-border text-center hover:border border-red-600"
+      to="https://ab.211.ca/"
+    >
       <div
         class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-cover bg-clip-border bg-center shadow-none"
         :style="{ backgroundImage: `url(https://www.ruralcrimewatch.ab.ca/application/files/7017/0242/6569/rcw--banner-01.jpg)` }"
@@ -70,12 +74,12 @@ const { data: crime } = await useAsyncData('crime', () => queryContent('/crime/'
         <div class="absolute inset-0 w-full h-full bg-black opacity-50" />
       </div>
       <div class="relative p-4">
-        <h2 class="mb-2 block font-sans text-4xl leading-[1.5] tracking-normal text-white antialiased font-bold">
+        <!-- <h2 class="mb-2 block font-sans text-4xl leading-[1.5] tracking-normal text-white antialiased font-bold">
           Report Crime 911
-        </h2>
-        <p class="line-clamp-2 text-xs text-gray-200">
+        </h2> -->
+        <!-- <p class="line-clamp-2 text-xs text-gray-200">
           ...
-        </p>
+        </p> -->
         <!-- <h5 class="block mb-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-400">
           Tania Andrew
         </h5> -->

@@ -11,14 +11,4 @@ export const menu: Menu[] = [
     icon: 'ph:map-trifold-duotone',
     _path: '/map',
   },
-  {
-    title: 'Associations',
-    icon: 'ph:users-duotone',
-    _path: '/associations',
-  },
-  {
-    title: 'Resources',
-    icon: 'ph:globe-hemisphere-west-duotone',
-    _path: '/resources',
-  },
 ]
