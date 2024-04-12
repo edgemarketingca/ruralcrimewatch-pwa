@@ -9,31 +9,8 @@ const { data: crime } = await useAsyncData('crime', () => queryContent('/crime/'
 
 <template>
   <main class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 place-items-center items-stretch text-white">
-    <NuxtLink
-      v-for="item of crime"
-      :key="item._path"
-      :to="item._path"
-      class="relative group grid w-full h-72 flex-col items-end justify-center overflow-hidden rounded-xl bg-neutral-900 bg-clip-border text-center hover:border border-primary"
-    >
-      <div
-        class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-cover bg-clip-border bg-center shadow-none"
-        :style="{ backgroundImage: `url(${item.image})` }"
-      >
-        <div class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-t from-black/80 via-black/50" />
-      </div>
-      <div class="relative p-4">
-        <h2 class="mb-2 block font-sans text-2xl leading-[1.5] tracking-normal text-white antialiased font-bold">
-          {{ item.title }}
-        </h2>
-        <p class="line-clamp-2 text-xs text-gray-200">
-          {{ item.description }}
-        </p>
-        <!-- <h5 class="block mb-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-400">
-          Tania Andrew
-        </h5> -->
-      </div>
-    </NuxtLink>
-    <Carousel :autoplay="2500" :wrapAround="true" :pauseAutoplayOnHover="true" class="col-span-2 w-full">
+    <AppCard v-for="item of crime" :key="item._path" :item="item" />
+    <Carousel :autoplay="2500" :wrapAround="true" :pauseAutoplayOnHover="true" class="lg:col-span-2 col-span-3 w-full">
       <Slide v-for="item in articles" :key="item._path" class="group w-full h-80 rounded-lg p-4 relative">
         <div class="bg-neutral-950 absolute inset-0 -z-20 mx-2 rounded-lg" />
         <div class="absolute inset-0 pointer-events-none -z-10 px-2">
@@ -56,29 +33,17 @@ const { data: crime } = await useAsyncData('crime', () => queryContent('/crime/'
         </div>
       </Slide>
     </Carousel>
-    <NuxtLink class="group relative w-full border border-transparent hover:border-primary rounded-lg" :to="{ name: 'map' }">
-      <div class="absolute bg-primary p-4 rounded-lg z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">
-        Click to view map
-      </div>
-      <div class="w-full h-full bg-cover rounded-xl hover:opacity-30 transition-all" style="background-image: url(/police.avif);" />
-    </NuxtLink>
-    <NuxtLink
-      class="relative col-span-3 grid w-full h-72 flex-col items-end justify-center overflow-hidden rounded-xl bg-neutral-900 bg-clip-border text-center hover:border border-red-600"
-      to="https://ab.211.ca/"
-    >
-      <div
-        class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-cover bg-clip-border bg-center shadow-none"
-        :style="{ backgroundImage: `url(https://www.ruralcrimewatch.ab.ca/application/files/7017/0242/6569/rcw--banner-01.jpg)` }"
-      >
-        <div class="absolute inset-0 w-full h-full bg-black opacity-50" />
-      </div>
-      <div class="relative p-4">
-        <h2 class="mb-2 block font-sans text-4xl leading-[1.5] tracking-normal text-white antialiased font-bold">
-          Get Local Support, You're Not Alone
-        </h2>
-      </div>
-      <div />
-    </NuxtLink>
+    <AppCard :item="{
+      _path: '/map',
+      title: 'Stay Informed',
+      description: 'view RCMP Crime Map',
+      image: '/police.avif'
+    }" />
+    <AppCard class="lg:col-span-3" :item="{
+      _path: 'https://ab.211.ca/',
+      title: `Get Local Support, You're Not Alone`,
+      image: 'https://www.ruralcrimewatch.ab.ca/application/files/7017/0242/6569/rcw--banner-01.jpg'
+    }" />
   </main>
 </template>
 

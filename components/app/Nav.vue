@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import type { ParsedContent } from '@nuxt/content/types';
 import type { Menu } from '~/types'
 
 defineProps<{
-  items: Menu[]
+  items: (Menu | ParsedContent)[]
   collapsed?: boolean
 }>()
 </script>

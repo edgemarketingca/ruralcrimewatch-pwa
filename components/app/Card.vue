@@ -1,32 +1,29 @@
 <script setup lang="ts">
-import { useDateFormat } from '@vueuse/core'
-import type { Article } from '~/types'
-
 defineProps<{
-  item: Article
+  item: any
 }>()
 </script>
 
 <template>
   <NuxtLink
-    :to="item.link"
-    class="group max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-neutral-900 dark:border-neutral-800"
+    :to="item._path"
+    class="relative group grid w-full min-h-full h-72 lg:col-span-1 col-span-3 flex-col items-center justify-center overflow-hidden rounded-xl bg-neutral-900 bg-clip-border text-center hover:border border-primary"
+    :class="{ 'md:items-end': item.description }"
   >
-    <img
-      class="h-60 w-full object-cover group-hover:scale-90 group-hover:rounded-xl rounded-t-lg transition-all"
-      :src="item.thumbnail"
-      alt=""
-    >
-    <div class="p-5">
-      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+    <div
+      class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-cover bg-clip-border bg-center shadow-none group-hover:scale-125 group-hover:blur-sm transition-all duration-300"
+      :style="{ backgroundImage: `url(${item.image})` }">
+      <div class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-t from-black/80 via-black/50" />
+    </div>
+    <div class="relative p-4">
+      <h2
+        class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold"
+        :class="item.description ? 'text-2xl' : 'text-3xl'"
+      >
         {{ item.title }}
-      </h5>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      </h2>
+      <p v-if="item.description" class="line-clamp-2 text-xs text-gray-200">
         {{ item.description }}
-      </p>
-      <p class="text-white text-xs opacity-60">
-        <Icon class="w-5 h-5" name="ph:calendar-duotone" />
-        {{ useDateFormat(new Date(item.date), 'YYYY,MM,DD').value }}
       </p>
     </div>
   </NuxtLink>
