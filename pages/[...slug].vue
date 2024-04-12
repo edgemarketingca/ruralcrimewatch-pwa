@@ -18,7 +18,7 @@ const { page, toc } = useContent()
     </div>
     <section class="grid grid-cols-12 gap-6">
       <ContentRenderer :value="page" :key="page._id">
-        <div :class="toc.links.length ? 'col-span-10' : 'col-span-12'">
+        <div :class="toc.links.length ? 'lg:col-span-10 col-span-12' : 'col-span-12'">
           <img class="w-full h-[30rem] object-cover rounded-lg mb-4" :src="page.image" :alt="page.title" />
           <!-- <h1>
             {{ page.title }}
@@ -26,7 +26,7 @@ const { page, toc } = useContent()
           <ContentRendererMarkdown :value="page" />
         </div>
       </ContentRenderer>
-      <nav v-if="toc.links.length" class="col-span-2 rounded-lg py-4 bg-white dark:bg-neutral-800">
+      <nav v-if="toc.links.length" class="col-span-2 rounded-lg py-4 bg-white dark:bg-neutral-800 hidden lg:block">
         <div class="sticky top-24 ml-6">
           <ul class="toc list-disc">
             <li v-for="item in toc.links" :key="item.id">

@@ -56,12 +56,11 @@ const { data: crime } = await useAsyncData('crime', () => queryContent('/crime/'
         </div>
       </Slide>
     </Carousel>
-    <NuxtLink class="group relative w-full" :to="{ name: 'map' }">
+    <NuxtLink class="group relative w-full border border-transparent hover:border-primary rounded-lg" :to="{ name: 'map' }">
       <div class="absolute bg-primary p-4 rounded-lg z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">
         Click to view map
       </div>
-      <div class="w-full h-full bg-cover rounded-xl opacity-40" style="background-image: url(https://cdn.hswstatic.com/gif/maps.jpg);" />
-      <!-- <AppMap class="h-80 group-hover:opacity-30 pointer-events-none transition-all group-hover:!border-primary" /> -->
+      <div class="w-full h-full bg-cover rounded-xl hover:opacity-30 transition-all" style="background-image: url(/police.avif);" />
     </NuxtLink>
     <NuxtLink
       class="relative col-span-3 grid w-full h-72 flex-col items-end justify-center overflow-hidden rounded-xl bg-neutral-900 bg-clip-border text-center hover:border border-red-600"
@@ -74,15 +73,9 @@ const { data: crime } = await useAsyncData('crime', () => queryContent('/crime/'
         <div class="absolute inset-0 w-full h-full bg-black opacity-50" />
       </div>
       <div class="relative p-4">
-        <!-- <h2 class="mb-2 block font-sans text-4xl leading-[1.5] tracking-normal text-white antialiased font-bold">
-          Report Crime 911
-        </h2> -->
-        <!-- <p class="line-clamp-2 text-xs text-gray-200">
-          ...
-        </p> -->
-        <!-- <h5 class="block mb-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-gray-400">
-          Tania Andrew
-        </h5> -->
+        <h2 class="mb-2 block font-sans text-4xl leading-[1.5] tracking-normal text-white antialiased font-bold">
+          Get Local Support, You're Not Alone
+        </h2>
       </div>
       <div />
     </NuxtLink>
