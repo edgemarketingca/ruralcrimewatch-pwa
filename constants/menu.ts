@@ -12,3 +12,21 @@ export const menu: Menu[] = [
     _path: '/map',
   },
 ]
+
+export const mobileMenu: Menu[] = [
+  {
+    title: 'Home',
+    icon: 'ph:house-duotone',
+    _path: '/',
+  },
+  {
+    title: 'Crime Map',
+    icon: 'ph:map-trifold-duotone',
+    _path: '/map',
+  },
+  {
+    title: 'Newsletter',
+    icon: 'i-ic-outline-mark-email-unread',
+    _path: 'https://www.ruralcrimewatch.ab.ca/join-our-newsletter',
+  },
+]

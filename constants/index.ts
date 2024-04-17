@@ -1,2 +1,2 @@
-export { menu } from './menu'
+export { menu, mobileMenu } from './menu'
 export { socials } from './socials'

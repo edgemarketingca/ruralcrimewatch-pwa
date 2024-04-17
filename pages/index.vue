@@ -35,8 +35,8 @@ const { data: crime } = await useAsyncData('crime', () => queryContent('/crime/'
     </Carousel>
     <AppCard :item="{
       _path: '/map',
-      title: 'Stay Informed',
-      description: 'view RCMP Crime Map',
+      title: 'RCMP Crime Map',
+      description: 'Keep current with your region\'s recent thefts, mischief, and break-and-enter reports.',
       image: '/police.avif'
     }" />
     <AppCard class="lg:col-span-3" :item="{
