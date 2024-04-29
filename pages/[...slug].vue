@@ -19,7 +19,7 @@ const { page, toc } = useContent()
     <section class="grid grid-cols-12 gap-6">
       <ContentRenderer :value="page" :key="page._id">
         <div :class="toc.links.length ? 'lg:col-span-10 col-span-12' : 'col-span-12'">
-          <img class="w-full h-[30rem] object-cover rounded-lg mb-4" :src="page.image" :alt="page.title" />
+          <img class="w-full h-[30rem] object-cover rounded-lg mb-4 border border-neutral-400/20" :src="page.image" :alt="page.title" />
           <!-- <h1>
             {{ page.title }}
           </h1> -->
