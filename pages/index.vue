@@ -45,7 +45,7 @@ function getThumbnail(item: {} | undefined) {
           </p>
           <p class="absolute left-4 bottom-4 text-xs flex items-center gap-1 justify-center">
             <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
-            {{ useDateFormat(new Date(item.date_added), 'YYYY,MM,DD').value }}
+            {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
           </p>
           <NuxtLink
             class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-primary p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all"
