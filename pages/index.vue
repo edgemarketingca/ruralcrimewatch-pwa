@@ -8,16 +8,33 @@ const { data: news } = await useFetch('/api/pages', {
   method: 'POST',
   transform: (data) => data.filter((page: any) => page.path.includes('/news/articles/'))
 })
+
+function getThumbnail(item: {} | undefined) {
+  if (item) {
+    const thumbnail: any = Object.values(item).find((value: any) => value.handle === 'thumbnail')
+    if (thumbnail) {
+      return thumbnail?.value?.data
+    }
+  }
+}
 </script>
 
 <template>
   <main class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 place-items-center items-stretch text-white pb-10">
+    <!-- <div v-for="item in news" :key="item.path">
+      {{ item }}
+    </div> -->
     <AppCard v-for="item of crime" :key="item._path" :item="item" />
     <Carousel :autoplay="2500" :wrapAround="true" :pauseAutoplayOnHover="true" class="lg:col-span-2 col-span-3 w-full">
       <Slide v-for="item in news" :key="item.path" class="group w-full h-80 rounded-lg p-4 relative">
         <div class="bg-neutral-800 absolute inset-0 -z-20 mx-2 rounded-lg" />
         <div class="absolute inset-0 pointer-events-none -z-10 mx-2 rounded-lg group-hover:border border-primary">
-          <img v-if="item.image" class="rounded-lg opacity-50 object-cover w-full h-full"  :src="item.image" >
+          <img
+            v-if="getThumbnail(item.custom_attributes?.data)"
+            class="rounded-lg opacity-50 object-cover w-full h-full"
+            :alt="item.name"
+            :src="getThumbnail(item.custom_attributes.data)?.url"
+          >
         </div>
         <div class="p-4 flex flex-col gap-4">
           <h2 class="text-3xl">
