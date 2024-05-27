@@ -27,11 +27,11 @@ export interface Channel {
 }
 
 export interface Article {
-  title: string
+  name: string
   thumbnail: string
   description: string
-  link: string
-  date: string
+  path: string
+  date_added: string
 }
 
 export interface Menu {

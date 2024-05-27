@@ -10,7 +10,7 @@ const { page, toc } = useContent()
         <Icon class="w-5 h-5" name="ph:arrow-left" />
       </NuxtLink>
       <div>
-        <span class="font-bold text-xl">
+        <span class="font-bold text-xl text-black">
           {{ page.title }}
         </span>
       </div>

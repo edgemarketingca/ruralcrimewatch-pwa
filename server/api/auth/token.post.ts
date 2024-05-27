@@ -1,24 +1,41 @@
 export default defineEventHandler(async () => {
 
-  const clientId = '383ec9b637c8bedc01ec5e399f2a94addc90241924f24cdeced2231b628d213d'
-  const clientSecret = 'f5f0c2c580abfb555190674d9c9d61cb6ab465a2e7d75758217074118082b66a7e6b1a5c7826ca83388fbcf39dd2a0cc'
-  const credentials = btoa(`${clientId}:${clientSecret}`)
+  const client_id = '350c2c0fc3f638bfbc743f0b9d7efff7484dc77f2f437ab01eb4da600f26a94e'
+  const clientSecret = '6ecac40f11955bc5ee3929a826d3aa7483d54ffbf82399de62aa4c738f15543f7de82f502b54fe6696e885cef61a05a1'
+  // const credentials = btoa(`${clientId}:${clientSecret}`)
 
-  const scopes = 'openid pages:read files:read sites:read account:read blocks:read'
+  const scope = 'account:read blocks:read calendar_events:read calendars:read files:read groups:read pages:read pages:versions:read sites:read system:info:read users:read'
+  
+  const authURL = 'https://www.ruralcrimewatch.ab.ca/oauth/2.0/authorize'
+  const accessTokenUrl = 'https://www.ruralcrimewatch.ab.ca/oauth/2.0/token'
+  const redirect_uri = 'https://www.ruralcrimewatch.ab.ca/ccm/system/api/documentation/redirect/a4688c88-d299-11ee-bad1-ac1f6bb580e6'
+
+  
+
+  // const auth = await $fetch(authURL, {
+  //   method: 'POST',
+  //   query: {
+  //     response_type: 'code',
+  //     client_id,
+  //     redirect_uri,
+  //     scope,
+  //   },
+  // })
 
   const requestBody = new URLSearchParams();
   requestBody.append('grant_type', 'client_credentials');
-  requestBody.append('scope', scopes);
+  requestBody.append('scope', scope)
 
-
-  const data = await $fetch('https://ruralcrimewatch.ab.ca/oauth/2.0/token', {
+  const token = await $fetch(accessTokenUrl, {
     method: 'POST',
     headers: {
-      'Authorization': `Basic ${credentials}`,
       'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': `Basic MzUwYzJjMGZjM2Y2MzhiZmJjNzQzZjBiOWQ3ZWZmZjc0ODRkYzc3ZjJmNDM3YWIwMWViNGRhNjAwZjI2YTk0ZTo2ZWNhYzQwZjExOTU1YmM1ZWUzOTI5YTgyNmQzYWE3NDgzZDU0ZmZiZjgyMzk5ZGU2MmFhNGM3MzhmMTU1NDNmN2RlODJmNTAyYjU0ZmU2Njk2ZTg4NWNlZjYxYTA1YTE=`,
     },
     body: requestBody,
   })
 
-  return data
+  return {
+    token,
+  }
 })
