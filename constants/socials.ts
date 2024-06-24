@@ -5,7 +5,6 @@ export const socials: Menu[] = [
     title: 'Youtube',
     icon: 'ph:youtube-logo-duotone',
     _path: 'https://www.youtube.com/channel/UCYDRG7rdEsKj2LJGgDOhmvw',
-    target: '_blank',
   },
   {
     title: 'Instagram',
