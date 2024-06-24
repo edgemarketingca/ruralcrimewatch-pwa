@@ -11,7 +11,7 @@
       </span>
       <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0 justify-center">
         <li>
-          <NuxtLink to="https://www.ruralcrimewatch.ab.ca/privacy-policy" class="hover:underline me-4 md:me-6">
+          <NuxtLink to="https://www.ruralcrimewatch.ab.ca/privacy-policy" target="_blank" class="hover:underline me-4 md:me-6">
             Privacy Policy
           </NuxtLink>
         </li>
