@@ -12,7 +12,7 @@ const open = ref(false)
         <img class="h-14" src="/logo.png">
       </NuxtLink>
       <div class="flex items-center gap-4">
-        <NuxtLink v-for="item of socials" :key="item.title" :to="item._path">
+        <NuxtLink v-for="item of socials" :key="item.title" :to="item._path" :target="_blank">
           <Icon class="w-6 h-6 text-white" :name="item.icon" />
         </NuxtLink>
         <AppColorMode />
