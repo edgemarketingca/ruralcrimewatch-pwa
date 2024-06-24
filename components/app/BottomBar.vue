@@ -11,8 +11,8 @@ import { mobileMenu } from '~/constants'
         active-class="bg-yellow-400 !text-black"
         class="flex items-center p-4 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-yellow-400 dark:hover:text-black hover:text-black transition"
       >
-        <Icon v-if="item.icon" class="w-6 h-6" :name="item.icon" />
-        <span class="ms-3">
+        <Icon v-if="item.icon" class="w-6 h-6" :name="item.icon" style="margin: 0 0.5rem;" />
+        <span class="ms-3" style="margin:0;">
           {{ item.title }}
         </span>
       </NuxtLink>
