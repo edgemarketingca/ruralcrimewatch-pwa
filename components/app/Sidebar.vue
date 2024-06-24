@@ -36,7 +36,7 @@ const { menus } = await useMenu()
       </div>
       <div>
         <div class="border-t border-gray-400/30 my-4" />
-        <div class="flex items-center gap-4">
+        <div class="flex justify-center gap-4">
           <AppColorMode class="w-full flex items-center p-2 !text-gray-900 dark:!text-white rounded-lg hover:bg-yellow-400 hover:text-black dark:hover:!text-black transition" :class="{ 'justify-center': collapsed }">
              <NuxtLink v-for="item of socials" :key="item.title" :to="item._path" target="_blank">
               <Icon class="w-6 h-6 text-white" :name="item.icon" />
