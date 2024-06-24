@@ -15,7 +15,7 @@ export const menu: Menu[] = [
 
 export const mobileMenu: Menu[] = [
   {
-    title: 'Home',
+    title: '', //home
     icon: 'ph:house-duotone',
     _path: '/',
   },
@@ -27,7 +27,6 @@ export const mobileMenu: Menu[] = [
   {
     title: 'Newsletter',
     icon: 'i-ic-outline-mark-email-unread',
-    target: '_blank',
     _path: 'https://www.ruralcrimewatch.ab.ca/join-our-newsletter',
   },
 ]
