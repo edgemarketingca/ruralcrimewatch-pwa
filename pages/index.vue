@@ -65,7 +65,8 @@ function getThumbnail(item: {} | undefined) {
     <AppCard class="lg:col-span-3" :item="{
       _path: 'https://ab.211.ca/',
       title: `Get Local Support, You're Not Alone`,
-      image: 'https://www.ruralcrimewatch.ab.ca/application/files/7017/0242/6569/rcw--banner-01.jpg'
+      target: '_blank',
+      image: 'https://www.ruralcrimewatch.ab.ca/application/files/9017/1926/1420/rcw--banner-08.jpg'
     }" />
   </main>
 </template>
