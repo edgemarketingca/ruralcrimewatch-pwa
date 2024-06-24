@@ -42,10 +42,10 @@ const { menus } = await useMenu()
             <Icon class="w-6 h-6 text-white" :name="item.icon" />
           </NuxtLink>
             
-          <AppColorMode class="w-full flex items-center p-2 !text-gray-900 dark:!text-white rounded-lg hover:bg-yellow-400 hover:text-black dark:hover:!text-black transition" :class="{ 'justify-center': collapsed }">
-            <span v-if="!collapsed" class="capitalize ms-3">
+          <AppColorMode class="p-2 !text-gray-900 dark:!text-white rounded-lg hover:bg-yellow-400 hover:text-black dark:hover:!text-black transition" :class="{ 'justify-center': collapsed }">
+            <!-- <span v-if="!collapsed" class="capitalize ms-3">
                 {{ $colorMode.preference }}
-              </span>
+              </span> -->
           </AppColorMode>
           
           <!-- <button
