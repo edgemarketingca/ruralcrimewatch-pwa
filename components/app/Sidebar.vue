@@ -36,16 +36,20 @@ const { menus } = await useMenu()
       </div>
       <div>
         <div class="border-t border-gray-400/30 my-4" />
-         <NuxtLink v-for="item of socials" :key="item.title" :to="item._path" target="_blank">
-          <Icon class="w-6 h-6 text-white" :name="item.icon" />
-        </NuxtLink>
-        <AppColorMode />
-        <button
-          class="text-white"
-          @click="open = !open"
-        >
-          <Icon class="w-6 h-6" :name="open ? 'i-ph-x' : 'i-ph-list'" />
-        </button>
+        <div class="flex items-center gap-4">
+          
+           <NuxtLink v-for="item of socials" :key="item.title" :to="item._path" target="_blank">
+            <Icon class="w-6 h-6 text-white" :name="item.icon" />
+          </NuxtLink>
+          <AppColorMode />
+          <!-- <button
+            class="text-white"
+            @click="open = !open"
+          >
+            <Icon class="w-6 h-6" :name="open ? 'i-ph-x' : 'i-ph-list'" />
+          </button> -->
+        </div>
+        
         <!--
         <AppNav class="grid items-center justify-center gap-2 place-items-center" :class="collapsed ? 'grid-cols-1' : 'grid-cols-5'" :items="socials" :collapsed="true">
           <li>
