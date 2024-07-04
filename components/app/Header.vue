@@ -24,6 +24,6 @@ const open = ref(false)
         </button>
       </div>
     </div>
-    <AppNav v-show="open" :items="menus" class="space-y-2 pb-4 pt-4 mt-4 border-t border-gray-400/20" />
+    <AppNav v-show="open" v-model:open="open" :items="menus" class="space-y-2 pb-4 pt-4 mt-4 border-t border-gray-400/20" />
   </nav>
 </template>

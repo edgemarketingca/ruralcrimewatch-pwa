@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content/types';
+import type { ParsedContent } from '@nuxt/content/types'
 import type { Menu } from '~/types'
+import { useVModel } from '@vueuse/core'
 
-defineProps<{
+const props = defineProps<{
   items: (Menu | ParsedContent)[]
   collapsed?: boolean
+  open?: boolean
 }>()
+
+const model = useVModel(props, 'open')
 </script>
 
 <template>
@@ -17,6 +21,7 @@ defineProps<{
         :class="{ 'justify-center': collapsed }"
         active-class="bg-yellow-400 !text-black"
         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-yellow-400 hover:text-black dark:hover:text-black transition"
+        @click="model = false"
       >
         <Icon class="w-6 h-6" :name="item.icon ?? 'i-ph:circle'" />
         <span v-if="!collapsed" class="ms-3">
