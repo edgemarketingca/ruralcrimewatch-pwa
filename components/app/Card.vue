@@ -8,7 +8,7 @@ defineProps<{
   <NuxtLink
     :to="item._path"
     class="relative group grid w-full min-h-full h-72 lg:col-span-1 col-span-3 flex-col items-center justify-center overflow-hidden rounded-xl bg-neutral-900 bg-clip-border text-center hover:border border-primary"
-    :class="{ 'md:items-end': item.description }"
+    :class="{ 'md:items-center': item.description }"
   >
     <div
       class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-cover bg-clip-border bg-center shadow-none group-hover:scale-110 group-hover:blur-sm transition-all duration-300"
