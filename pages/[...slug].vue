@@ -26,7 +26,7 @@ const { page, toc } = useContent()
           <ContentRendererMarkdown :value="page" />
         </div>
       </ContentRenderer>
-      <nav v-if="toc.links.length" class="col-span-2 rounded-lg py-4 bg-white dark:bg-neutral-800 hidden lg:block">
+      <nav v-if="toc.links.length" class="col-span-2 rounded-lg p-4 bg-white dark:bg-neutral-800 hidden lg:block">
         <div class="sticky top-24">
           <ul class="toc list-none">
             <li v-for="item in toc.links" :key="item.id">
