@@ -10,8 +10,6 @@ export default defineEventHandler(async () => {
   const accessTokenUrl = 'https://www.ruralcrimewatch.ab.ca/oauth/2.0/token'
   const redirect_uri = 'https://www.ruralcrimewatch.ab.ca/ccm/system/api/documentation/redirect/a4688c88-d299-11ee-bad1-ac1f6bb580e6'
 
-  
-
   // const auth = await $fetch(authURL, {
   //   method: 'POST',
   //   query: {
@@ -24,7 +22,7 @@ export default defineEventHandler(async () => {
 
   const requestBody = new URLSearchParams();
   requestBody.append('grant_type', 'client_credentials');
-  requestBody.append('scope', scope)
+  requestBody.append('scope', scope);
 
   const token = await $fetch(accessTokenUrl, {
     method: 'POST',
