@@ -38,7 +38,7 @@ const { menus } = await useMenu()
         <div class="border-t border-gray-400/30 my-4" />
         <div class="flex justify-center gap-4" style="flex-direction: row; flex-wrap: wrap;">
           
-          <NuxtLink v-for="item of socials" :key="item.title" :to="item._path" target="_blank">
+          <NuxtLink v-for="item of socials" :key="item.title" :to="item._path" target="_blank" external>
             <Icon class="w-6 h-6 !text-gray-900 dark:!text-white padding:2px" :name="item.icon" />
           </NuxtLink>
             
