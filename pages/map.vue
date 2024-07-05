@@ -3,5 +3,5 @@
 </script>
 
 <template>
-  <AppMap class="" style="height: 85vh;" />
+  <AppMap class="" style="height: 75vh;" />
 </template>
