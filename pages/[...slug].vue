@@ -27,7 +27,7 @@ const { page, toc } = useContent()
         </div>
       </ContentRenderer>
       <nav v-if="toc.links.length" class="col-span-2 rounded-lg py-4 bg-white dark:bg-neutral-800 hidden lg:block">
-        <div class="sticky top-24 ml-6">
+        <div class="sticky top-24">
           <ul class="toc list-none">
             <li v-for="item in toc.links" :key="item.id">
               <h2 class="block bg-yellow-400 !text-black router-link-exact-active flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-yellow-400 hover:text-black dark:hover:text-black transition">
@@ -97,12 +97,12 @@ const { page, toc } = useContent()
     font-size: 1rem;
     font-weight: 400;
   }
-  ul {
+ /* ul {
     list-style: disc;
     padding-left: 1rem;
     li {
       margin-bottom: 0.5rem;
     }
-  }
+  } */
 }
 </style>
