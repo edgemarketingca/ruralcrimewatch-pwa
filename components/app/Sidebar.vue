@@ -43,7 +43,7 @@ const { menus } = await useMenu()
             <Icon class="w-6 h-6 !text-gray-900 dark:!text-white padding:2px" :name="item.icon" />
           </NuxtLink>
           -->
-          <button v-for="item of socials" :key="item.title" window.location.href="item._path">
+          <button v-for="item of socials" :key="item.title" window.location.href="':to=item._path'">
             <Icon class="w-6 h-6 !text-gray-900 dark:!text-white padding:2px" :name="item.icon" />
           </button>
           
