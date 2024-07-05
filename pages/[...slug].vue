@@ -30,7 +30,7 @@ const { page, toc } = useContent()
         <div class="sticky top-24">
           <ul class="toc list-none">
             <li v-for="item in toc.links" :key="item.id">
-              <h2 class="block bg-yellow-400 !text-black router-link-exact-active flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-yellow-400 hover:text-black dark:hover:text-black transition">
+              <h2 class="block bg-gray-200 !text-black router-link-exact-active flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-yellow-400 dark:hover:bg-yellow-400 hover:text-black dark:hover:text-black transition">
                 <NuxtLink :to="`#${item.id}`">
                   {{ item.text }}
                 </NuxtLink>
@@ -98,9 +98,16 @@ const { page, toc } = useContent()
     font-weight: 400;
   }
   ul {
-   /* list-style: disc;
-    padding-left: 1rem;*/
+    list-style: disc;
+    padding-left: 1rem;
     li {
+      margin-bottom: 0.5rem;
+    }
+  } 
+  nav ul {
+    list-style: none;
+    padding-left: 0;
+    nav li {
       margin-bottom: 0.5rem;
     }
   } 
