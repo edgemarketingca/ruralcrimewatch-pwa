@@ -38,10 +38,15 @@ const { menus } = await useMenu()
         <div class="border-t border-gray-400/30 my-4" />
         <div class="flex justify-center gap-4" style="flex-direction: row; flex-wrap: wrap;">
           
+          <!--
           <NuxtLink v-for="item of socials" :key="item.title" :to="item._path" target="_blank" external>
             <Icon class="w-6 h-6 !text-gray-900 dark:!text-white padding:2px" :name="item.icon" />
           </NuxtLink>
-            
+          -->
+          <button v-for="item of socials" :key="item.title" window.location.href="item._path">
+            <Icon class="w-6 h-6 !text-gray-900 dark:!text-white padding:2px" :name="item.icon" />
+          </button>
+          
           <AppColorMode class="padding:2px !text-gray-900 dark:!text-white rounded-lg hover:bg-yellow-400 hover:text-black dark:hover:!text-black transition" :class="{ 'justify-center': collapsed }">
             <!-- <span v-if="!collapsed" class="capitalize ms-3">
                 {{ $colorMode.preference }}
