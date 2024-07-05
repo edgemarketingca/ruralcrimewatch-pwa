@@ -11,7 +11,7 @@ defineProps<{
     :class="{ 'md:items-end': item.description }"
   >
     <div
-      class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-cover bg-clip-border bg-center shadow-none group-hover:scale-125 group-hover:blur-sm transition-all duration-300"
+      class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-cover bg-clip-border bg-center shadow-none group-hover:scale-110 group-hover:blur-sm transition-all duration-300"
       :style="{ backgroundImage: `url(${item.image})` }">
       <div class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-t from-black/80 via-black/50" />
     </div>
