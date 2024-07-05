@@ -5,7 +5,7 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       colors: {
-        primary: '#F7CD46',
+        primary: '#facc15',
       },
       zIndex: {
         '-1': '-1',
