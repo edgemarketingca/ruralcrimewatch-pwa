@@ -17,12 +17,12 @@ defineProps<{
     </div>
     <div class="relative p-4">
       <h2
-        class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold"
+        class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg"
         :class="item.description ? 'text-2xl' : 'text-2xl'"
       >
         {{ item.title }}
       </h2>
-      <p v-if="item.description" class="line-clamp-2 text-xs text-gray-200">
+      <p v-if="item.description" class="line-clamp-2 text-xs text-gray-200 drop-shadow-lg">
         {{ item.description }}
       </p>
     </div>
