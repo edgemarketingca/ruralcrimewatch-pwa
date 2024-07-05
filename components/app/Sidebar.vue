@@ -44,7 +44,7 @@ const { menus } = await useMenu()
           </NuxtLink>
           -->
           
-          <b-button role="button" v-for="item of socials" :type="button" :label="item.title" :onclick="location.href='item._path','item.target">
+          <b-button role="button" v-for="item of socials" :type="button" :label="item.title" v-on:click="location.href='item._path','item.target'">
             <Icon class="w-6 h-6 !text-gray-900 dark:!text-white padding:2px" :name="item.icon" />
           </b-button>
             
