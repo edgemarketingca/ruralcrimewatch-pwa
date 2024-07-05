@@ -97,12 +97,12 @@ const { page, toc } = useContent()
     font-size: 1rem;
     font-weight: 400;
   }
- /* ul {
-    list-style: disc;
-    padding-left: 1rem;
+  ul {
+   /* list-style: disc;
+    padding-left: 1rem;*/
     li {
       margin-bottom: 0.5rem;
     }
-  } */
+  } 
 }
 </style>
