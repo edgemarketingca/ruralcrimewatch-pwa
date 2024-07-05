@@ -18,7 +18,7 @@ defineProps<{
     <div class="relative p-4">
       <h2
         class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold"
-        :class="item.description ? 'text-2xl' : 'text-3xl'"
+        :class="item.description ? 'text-2xl' : 'text-2xl'"
       >
         {{ item.title }}
       </h2>
