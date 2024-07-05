@@ -4,7 +4,7 @@ const { page, toc } = useContent()
 
 
 <template>
-  <main v-if="page" class="content-page text-black">
+  <main v-if="page" class="content-page text-black dark:text-white">
     <div class="sticky top-4 flex justify-between items-center bg-primary p-2 rounded-lg mb-6">
       <NuxtLink title="Home" class="p-2" to="/">
         <Icon class="w-5 h-5" name="ph:arrow-left" />
