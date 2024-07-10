@@ -11,6 +11,7 @@ useSeoMeta({
   ogDescription: 'Alberta Rural Crime Watch partners with the RCMP to help reduce crime in rural Alberta communities and build safer neighbourhoods.',
   ogImage: 'https://www.ruralcrimewatch.ab.ca/application/files/9717/0674/2451/crimewatch-socialshare.jpg',
   twitterCard: 'summary_large_image',
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
 })
 </script>
 
