@@ -10,7 +10,7 @@ function toggleMode() {
 </script>
 
 <template>
-  <button class="text-white" @click="toggleMode">
+  <button class="text-white" @click="toggleMode" title="Switch Theme">
     <Icon v-if="colorMode.preference === 'dark'" class="w-6 h-6" name="ph:moon-duotone" />
     <Icon v-else-if="colorMode.preference === 'light'" class="w-6 h-6" name="ph:sun-duotone" />
     <slot />
