@@ -8,8 +8,8 @@ const open = ref(false)
 <template>
   <nav class="sm:hidden fixed z-50 bg-black/40 backdrop-blur-lg border-b border-gray-400/20 top-0 right-0 left-0 px-4 py-2">
     <div class="flex justify-between items-center">
-      <NuxtLink title="app title" class="flex justify-center" to="/">
-        <img class="h-14" src="/logo.png">
+      <NuxtLink title="Alberta Provincial Rural Crime Watch Association" class="flex justify-center" to="/">
+        <img class="h-14" src="/logo.png" alt="Logo">
       </NuxtLink>
       <div class="flex items-center gap-4">
         <NuxtLink role="button" v-for="item of socials" :title="item.title" :key="item.title" :to="item._path" target="_blank" external>
