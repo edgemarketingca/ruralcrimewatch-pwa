@@ -3,6 +3,15 @@ import { useWindowScroll } from '@vueuse/core'
 
 const { y } = useWindowScroll()
 const { collapsed } = useLayout()
+
+useSeoMeta({
+  title: 'Alberta Rural Crime Watch | Rural Crime Prevention Alberta',
+  ogTitle: 'Alberta Rural Crime Watch | Rural Crime Prevention Alberta',
+  description: 'Alberta Rural Crime Watch partners with the RCMP to help reduce crime in rural Alberta communities and build safer neighbourhoods.',
+  ogDescription: 'Alberta Rural Crime Watch partners with the RCMP to help reduce crime in rural Alberta communities and build safer neighbourhoods.',
+  ogImage: 'https://www.ruralcrimewatch.ab.ca/application/files/9717/0674/2451/crimewatch-socialshare.jpg',
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <template>
