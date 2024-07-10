@@ -1,5 +1,0 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target" : { "namespace": "android_app", "package_name": "com.aprcwa.albertaruralcrimewatch",
-               "sha256_cert_fingerprints": ["9C:27:05:FA:B2:AF:34:A9:4E:06:F8:43:3D:A7:BE:DC:16:4A:16:CD:C3:02:0B:75:6A:0C:F1:FE:F3:18:C6:5D"] }
-}]
