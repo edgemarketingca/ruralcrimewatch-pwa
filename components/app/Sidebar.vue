@@ -28,8 +28,8 @@ const { menus } = await useMenu()
         <!-- <span class="text-white">
           {{ crime }}
         </span> -->
-        <NuxtLink title="app title" class="flex justify-center" to="/">
-          <img :width="collapsed ? 50 : resize ? 70 : 110" class="transition-all" src="/logo.png">
+        <NuxtLink title="Alberta Provincial Rural Crime Watch Association" class="flex justify-center" to="/">
+          <img :width="collapsed ? 50 : resize ? 70 : 110" class="transition-all" src="/logo.png" alt="Logo">
         </NuxtLink>
         <div class="border-t border-gray-400/30 my-4" />
         <AppNav class="space-y-2" :items="menus" :collapsed="collapsed" />
@@ -38,7 +38,7 @@ const { menus } = await useMenu()
         <div class="border-t border-gray-400/30 my-4" />
         <div class="flex justify-center gap-4" style="flex-direction: row; flex-wrap: wrap;">
           
-          <NuxtLink role="button" v-for="item of socials" :key="item.title" :to="item._path" target="_blank" external>
+          <NuxtLink role="button" v-for="item of socials" :title="item.title" :key="item.title" :to="item._path" target="_blank" external>
             <Icon class="w-6 h-6 !text-gray-900 dark:!text-white padding:2px" :name="item.icon" />
           </NuxtLink>
           
