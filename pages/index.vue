@@ -60,13 +60,13 @@ function getThumbnail(item: {} | undefined) {
       _path: '/map',
       title: 'RCMP Crime Map',
       description: 'Keep current with your region\'s recent thefts, mischief, and break-and-enter reports.',
-      image: '/police.avif'
+      image: '/rcmp-banner.webp'
     }" />
     <AppCard class="lg:col-span-3" :item="{
       _path: 'https://ab.211.ca/',
       title: `Get Local Support, You're Not Alone`,
       target: '_blank',
-      image: 'https://www.ruralcrimewatch.ab.ca/application/files/9017/1926/1420/rcw--banner-08.jpg'
+      image: '/help-banner.webp'
     }" />
   </main>
 </template>
