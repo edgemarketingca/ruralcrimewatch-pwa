@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-icon',
-    'nuxt-security',
+    '@nuxtjs/nuxt-security',
   ],
 
   security: {
