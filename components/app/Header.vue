@@ -16,10 +16,7 @@ const open = ref(false)
           <Icon class="w-6 h-6 text-white" :name="item.icon" />
         </NuxtLink>
         <AppColorMode />
-        <button
-          class="text-white"
-          @click="open = !open"
-        >
+        <button class="text-white" @click="open = !open" title="Menu">
           <Icon class="w-6 h-6" :name="open ? 'i-ph-x' : 'i-ph-list'" />
         </button>
       </div>
