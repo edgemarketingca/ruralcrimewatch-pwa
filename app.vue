@@ -7,6 +7,13 @@ const { collapsed } = useLayout()
 
 <template>
   <Html lang="en">
+    <head>
+
+      <title>Alberta Rural Crime Watch | Rural Crime Prevention Alberta</title>
+      <meta name="description" content="Alberta Rural Crime Watch partners with the RCMP to help reduce crime in rural Alberta communities and build safer neighbourhoods."/>
+      <meta name="robots" content="index, follow" />
+      
+    </head>
     <Body class="bg-white dark:bg-black">
       <NuxtLoadingIndicator />
 
