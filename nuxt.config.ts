@@ -30,7 +30,7 @@ export default defineNuxtConfig({
       }
     },
     sri: true
-  }
+  },
   
   modules: [
     '@nuxtjs/tailwindcss',
