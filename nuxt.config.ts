@@ -1,5 +1,16 @@
 export default defineNuxtConfig({
 
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    // '@vite-pwa/nuxt',
+    '@nuxthq/studio',
+    '@nuxt/content',
+    '@vueuse/nuxt',
+    'nuxt-icon',
+    'nuxt-security',
+  ],
+
   security: {
     nonce: true, // Enables HTML nonce support in SSR mode
     ssg: {
@@ -32,16 +43,6 @@ export default defineNuxtConfig({
     sri: true
   },
   
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    // '@vite-pwa/nuxt',
-    '@nuxthq/studio',
-    '@nuxt/content',
-    '@vueuse/nuxt',
-    'nuxt-icon',
-  ],
-
   tailwindcss: {
     configPath: 'tailwind.config.ts',
     exposeConfig: false,
