@@ -8,9 +8,10 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-icon',
-    'nuxt-security',
+   // 'nuxt-security',
   ],
 
+  /*
   security: {
     nonce: true, // Enables HTML nonce support in SSR mode
     ssg: {
@@ -42,6 +43,7 @@ export default defineNuxtConfig({
     },
     sri: true
   },
+  */
   
   tailwindcss: {
     configPath: 'tailwind.config.ts',
