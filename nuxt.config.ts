@@ -75,4 +75,6 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+  dev: true,
+  ssr: true,
 })
