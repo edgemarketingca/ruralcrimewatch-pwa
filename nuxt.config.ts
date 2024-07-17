@@ -5,11 +5,11 @@ export default defineNuxtConfig({
       meta: [
         { name: 'robots', content: 'index, follow' },
       ], 
-      /*
+      
       link: [
-        { rel: 'manifest', href: '/manifest.json' },
+        { rel: 'favicon', href: '/favicon.ico' },
       ],
-      */ 
+      
     },
   },
 
