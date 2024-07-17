@@ -6,7 +6,7 @@ export default defineNuxtConfig({
         { name: 'robots', content: 'index, follow' },
       ],
       link: [
-        { rel: 'manifest', href: 'manifest.json' },
+        { rel: 'manifest', href: '%PUBLIC_URL%/manifest.json' },
       ],
     },
   },
