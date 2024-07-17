@@ -3,7 +3,8 @@ import { useWindowScroll } from '@vueuse/core'
 
 const { y } = useWindowScroll()
 const { collapsed } = useLayout()
-
+const manifestJSON = require('./public/manifest.json')
+  
 useSeoMeta({
   title: 'Alberta Rural Crime Watch | Rural Crime Prevention Alberta',
   ogTitle: 'Alberta Rural Crime Watch | Rural Crime Prevention Alberta',
