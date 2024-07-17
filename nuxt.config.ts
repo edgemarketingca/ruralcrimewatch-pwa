@@ -4,10 +4,7 @@ export default defineNuxtConfig({
     head: {
       meta: [
         { name: 'robots', content: 'index, follow' },
-      ],
-      link: [
-        { rel: 'manifest', href: '%PUBLIC_URL%/manifest.json' },
-      ],
+      ], 
     },
   },
 
@@ -83,6 +80,10 @@ export default defineNuxtConfig({
     keepalive: true,
   },
 
+  loadingIndicator: {
+    name: '~/composables/loading.html'
+  },
+  
   devtools: {
     enabled: true,
   },
