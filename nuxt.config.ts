@@ -78,10 +78,11 @@ export default defineNuxtConfig({
 
   app: {
     keepalive: true,
-  },
-
+  }, 
+  
   loadingIndicator: {
-    name: '~/composables/loading.html'
+    name: '~/composables/loading.html',
+    img: '/icons/192.png'
   },
   
   devtools: {
