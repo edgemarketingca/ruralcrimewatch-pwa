@@ -1,5 +1,13 @@
 export default defineNuxtConfig({
 
+  app: {
+    head: {
+      meta: [
+        { name: 'robots', content: 'index, follow' },
+      ],
+    },
+  },
+
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
@@ -75,6 +83,4 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
-  dev: true,
-  ssr: true,
 })
