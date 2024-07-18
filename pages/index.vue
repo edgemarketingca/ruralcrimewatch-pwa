@@ -35,6 +35,7 @@ function getThumbnail(item: {} | undefined) {
             :alt="item.name"
             :src="getThumbnail(item.custom_attributes.data)?.url"
           >
+          <div class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-t from-black/80 via-black/50" />
         </div>
         <div class="p-4 flex flex-col gap-4">
           <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-2xl">
@@ -53,6 +54,7 @@ function getThumbnail(item: {} | undefined) {
           >
             Read more
           </NuxtLink>
+          
         </div>
       </NuxtLink>
       </Slide>
