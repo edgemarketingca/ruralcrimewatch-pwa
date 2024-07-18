@@ -65,7 +65,7 @@ function getThumbnail(item: {} | undefined) {
               <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
               {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
                | 
-              <NuxtLink :to="item.path" title="item.title">Read More</NuxtLink> <Icon class="w-5 h-5" name="mdi:chevron-double-right" />
+              <NuxtLink :to="item.path" title="Read More">Read More</NuxtLink> <Icon class="w-5 h-5" name="mdi:chevron-double-right" />
               
             </p>
           </div>
