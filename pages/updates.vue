@@ -28,14 +28,13 @@ function getThumbnail(item: {} | undefined) {
       <div />
     </div>
 
-    <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 place-items-center items-stretch text-white pb-10">
-    <section class="grid grid-cols-1 gap-6">
+    <section class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 place-items-center items-stretch text-black pb-10">
        
       <!-- Goal: display full list of news articles, with pagination -->
       
-      <div v-for="item in newslist" :key="item.path" class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-6 place-items-center items-stretch text-white pb-10">
+      <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 border border-primary">
         
-          <div class="col-span-1">
+          <div class="pb-4">
             <img
             v-if="getThumbnail(item.custom_attributes?.data)"
             class="rounded-lg opacity-100 object-cover w-full h-full"
@@ -43,14 +42,14 @@ function getThumbnail(item: {} | undefined) {
             :src="getThumbnail(item.custom_attributes.data)?.url"
             >
           </div>
-          <div class="col-span-3">
-            <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-2xl">
+          <div class="">
+            <h2 class="mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold text-1xl">
                 {{ item.name }}
             </h2>
-            <p class="line-clamp-2 text-xs text-gray-200 drop-shadow-lg">
+            <p class="line-clamp-2 text-s">
               {{ item.description }}
             </p>
-            <p class="text-xs flex items-center gap-1 py-4">
+            <p class="text-s flex items-center gap-1 py-4">
               <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
               {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
              | 
@@ -63,7 +62,6 @@ function getThumbnail(item: {} | undefined) {
       </div>  
       
     </section>
-    </div>
         
     <hr />
 
