@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Carousel, Pagination, Slide } from 'vue3-carousel'
+import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 
 const { data: crime } = await useAsyncData('crime', () => queryContent('/crime/').where({ _dir: 'crime' }).find())
@@ -37,18 +37,18 @@ function getThumbnail(item: {} | undefined) {
           >
         </div>
         <div class="p-4 flex flex-col gap-4">
-          <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-3xl">
+          <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-2xl">
               {{ item.name }}
           </h2>
-          <p class="text-sm drop-shadow-lg">
+          <p class="line-clamp-2 text-xs text-gray-200 drop-shadow-lg">
             {{ item.description }}
           </p>
           <p class="absolute left-4 bottom-4 text-xs flex items-center gap-1 justify-center">
             <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
             {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
           </p>
-          <NuxtLink
-            class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-primary p-2 rounded-lg opacity-80 group-hover:opacity-100 transition-all !text-black"
+          /* <NuxtLink
+            class="absolute right-4 bottom-4  -translate-x-1/2 bg-primary p-2 rounded-lg opacity-80 group-hover:opacity-100 transition-all !text-black"
             :to="item.path"
           >
             Read more
@@ -71,6 +71,7 @@ function getThumbnail(item: {} | undefined) {
     <AppCard class="lg:col-span-2" :item="{
       _path: 'https://ab.211.ca/',
       title: `Get Local Support, You're Not Alone`,
+      description: 'Alberta 211 | Free. Confidential. Live Answer 24/7',
       target: '_blank',
       image: '/help-banner.webp'
     }" />
