@@ -19,9 +19,7 @@ import { version } from '~/package.json'
     <h2 class="text-3xl text-primary">
       Signup for our Newsletter: 
     </h2>
-    <NuxtLink
-      class="bg-primary p-2 rounded-lg opacity-80 group-hover:opacity-100 transition-all !text-black"
-      :to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter">
+    <NuxtLink to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter" target="_blank" class="bg-primary p-2 rounded-lg opacity-80 group-hover:opacity-100 transition-all !text-black">
       Join Today!
     </NuxtLink>
        
