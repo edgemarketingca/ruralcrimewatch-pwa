@@ -16,7 +16,7 @@ function getThumbnail(item: {} | undefined) {
 <template>
   <main class="content-page list-page text-black dark:text-white">
     
-    <div class="sticky top-4 flex justify-between items-center bg-primary p-2 rounded-lg mb-6">
+    <div class="sticky top-4 z-40 flex justify-between items-center bg-primary p-2 rounded-lg mb-6">
       <NuxtLink title="Home" class="p-2" to="/">
         <Icon class="w-5 h-5 text-black" name="ph:arrow-left" />
       </NuxtLink>
@@ -32,12 +32,12 @@ function getThumbnail(item: {} | undefined) {
        
       <!-- Goal: display full list of news articles, with pagination -->
       
-      <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg border border-primary bg-white ">
+      <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg border border-primary bg-white">
         
-          <div class="pb-4">
+          <div class="relative mb-4 h-48 rounded-lg border border-primary">
             <img
             v-if="getThumbnail(item.custom_attributes?.data)"
-            class="rounded-lg opacity-100 object-cover w-full h-full"
+            class="absolute inset-0 rounded-lg opacity-100 object-cover w-full h-full"
             :alt="item.name"
             :src="getThumbnail(item.custom_attributes.data)?.url"
             >
