@@ -38,7 +38,7 @@ function getThumbnail(item: {} | undefined) {
           <div class="relative lg:col-span-1 col-span-1">
             <img
             v-if="getThumbnail(item.custom_attributes?.data)"
-            class="rounded-lg opacity-50 object-cover w-full h-full"
+            class="rounded-lg opacity-100 object-cover w-full h-full"
             :alt="item.name"
             :src="getThumbnail(item.custom_attributes.data)?.url"
             >
