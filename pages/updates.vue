@@ -33,10 +33,9 @@ function getThumbnail(item: {} | undefined) {
        
       <!-- Goal: display full list of news articles, with pagination -->
       
-      <div v-for="item in newslist" :key="item.path" class="w-full relative lg:col-span-3">
-      <div class="group grid">
+      <div v-for="item in newslist" :key="item.path" class="w-full relative border-primary group grid">
         
-          <div class="relative group grid w-full lg:col-span-1 col-span-1 flex-col">
+          <div class="relative lg:col-span-1 col-span-1">
             <img
             v-if="getThumbnail(item.custom_attributes?.data)"
             class="rounded-lg opacity-50 object-cover w-full h-full"
@@ -44,7 +43,7 @@ function getThumbnail(item: {} | undefined) {
             :src="getThumbnail(item.custom_attributes.data)?.url"
             >
           </div>
-          <div class="relative group grid w-full lg:col-span-2 col-span-3 flex-col">
+          <div class="relative lg:col-span-2 col-span-3">
             <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-2xl">
                 {{ item.name }}
             </h2>
@@ -62,7 +61,6 @@ function getThumbnail(item: {} | undefined) {
           </div>
           
       </div>  
-      </div>
       
     </section>
     </div>
