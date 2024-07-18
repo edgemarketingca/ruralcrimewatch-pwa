@@ -34,7 +34,7 @@ function getThumbnail(item: {} | undefined) {
       
       <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg bg-white">
         
-          <div class="relative mb-4 h-48 rounded-lg">
+          <div class="relative mb-4 h-48 rounded-lg border border-gray">
             <img
             v-if="getThumbnail(item.custom_attributes?.data)"
             class="absolute inset-0 rounded-lg opacity-100 object-cover w-full h-full"
@@ -42,7 +42,7 @@ function getThumbnail(item: {} | undefined) {
             :src="getThumbnail(item.custom_attributes.data)?.url"
             >
           </div>
-          <div class="">
+          <div class="p-4">
             <h3 class="mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
                 {{ item.name }}
             </h3>
