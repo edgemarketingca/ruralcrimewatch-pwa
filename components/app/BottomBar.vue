@@ -4,7 +4,7 @@ import { mobileMenu } from '~/constants'
 
 <template>
   <ul class="fixed bottom-0 right-0 left-0 z-50 bg-black/40 backdrop-blur-lg flex justify-between sm:hidden" style="font-size: 0.9rem;">
-    <li v-for="item, index of mobileMenu" :key="item._path" class="w-full"> 
+    <li v-for="item, index of mobileMenu" :key="item._path" class="w-full justify-center"> 
       <!--:class="{ ' w-full border-l border-transparent hover:border-gray-200/20': index } -->
       <NuxtLink
         :title="item.metatitle"
