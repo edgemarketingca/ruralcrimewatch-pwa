@@ -36,10 +36,10 @@ function getThumbnail(item: {} | undefined) {
           >
         </div>
         <div class="p-4 flex flex-col gap-4">
-          <h2 class="text-3xl">
+          <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-3xl">
             {{ item.name }}
           </h2>
-          <p class="text-sm">
+          <p class="text-sm drop-shadow-lg">
             {{ item.description }}
           </p>
           <p class="absolute left-4 bottom-4 text-xs flex items-center gap-1 justify-center">
