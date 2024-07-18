@@ -43,9 +43,9 @@ function getThumbnail(item: {} | undefined) {
             >
           </div>
           <div class="">
-            <h2 class="mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold text-1xl">
+            <h3 class="mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
                 {{ item.name }}
-            </h2>
+            </h3>
             <p class="text-s">
               {{ item.description }}
             </p>
