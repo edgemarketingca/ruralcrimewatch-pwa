@@ -27,7 +27,7 @@ import { version } from '~/package.json'
 
     <section class="grid grid-cols-1 gap-2 p-4">
     
-      <NuxtLink to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter" target="_blank" class="bg-primary p-2 rounded-lg opacity-80 group-hover:opacity-100 transition-all text-center !text-black">
+      <NuxtLink to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter" target="_blank" class="bg-primary p-2 rounded-lg text-center !text-black opacity-80 hover:opacity-100 transition-all-ease">
         Signup for our Newsletter - Join Today!
       </NuxtLink>
       
