@@ -14,7 +14,7 @@ function getThumbnail(item: {} | undefined) {
 </script>
 
 <template>
-  <main class="content-page list-page text-black dark:text-white">
+  <main class="list-page text-black dark:text-white">
     
     <div class="sticky top-4 z-40 flex justify-between items-center bg-primary p-2 rounded-lg mb-6">
       <NuxtLink title="Home" class="p-2" to="/">
@@ -45,7 +45,7 @@ function getThumbnail(item: {} | undefined) {
             </NuxtLink>
           </div>
           <div class="p-2">
-            <h3 class="mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
+            <h3 class="titleheading mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
                 <NuxtLink :to="item.path" :title="item.title">
                   {{ item.name }}
                 </NuxtLink>
@@ -82,6 +82,7 @@ function getThumbnail(item: {} | undefined) {
 
 <style lang="scss">
 .list-page {
+  a.titleheading { text-decortation: none; }
   .toc {
     h2, h3 {
       margin-bottom: 0;
