@@ -46,10 +46,10 @@ function getThumbnail(item: {} | undefined) {
             <h3 class="mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
                 {{ item.name }}
             </h3>
-            <p class="text-s">
+            <p class="pb-4">
               {{ item.description }}
             </p>
-            <p class="text-s flex items-center gap-1 py-4">
+            <p class="flex items-center gap-1">
               <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
               {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
              | 
