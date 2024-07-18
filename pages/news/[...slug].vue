@@ -23,3 +23,7 @@ function getFile(file: string) {
     <!-- add alert -->
   </div>
 </template>
+
+<style lang="scss">
+a { text-decoration: underline; font-weight: bold; }
+</style>
