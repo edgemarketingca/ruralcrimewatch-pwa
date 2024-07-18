@@ -28,11 +28,11 @@ function getThumbnail(item: {} | undefined) {
       <div />
     </div>
 
-    <section class="grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-8 place-items-center items-stretch text-black pb-10">
+    <section class="grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-8 place-items-center items-stretch text-black dark:text-white pb-10">
        
       <!-- Goal: display full list of news articles, with pagination -->
       
-      <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg bg-white">
+      <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg bg-white dark:bg-neutral-800 ">
         
           <div class="relative mb-4 h-48 rounded-lg border border-gray">
             <img
