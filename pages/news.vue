@@ -3,7 +3,7 @@ import { version } from '~/package.json'
 </script>
 
 <template>
-  <main class="list-page text-black dark:text-white">
+  <main class="content-page list-page text-black dark:text-white">
     
     <div class="sticky top-4 flex justify-between items-center bg-primary p-2 rounded-lg mb-6">
       <NuxtLink title="Home" class="p-2" to="/">
@@ -14,6 +14,7 @@ import { version } from '~/package.json'
           News &amp; Updates from the APRCWA
         </span>
       </div>
+      <div />
     </div>
 
     <section class="grid grid-cols-12 gap-6">
