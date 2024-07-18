@@ -12,7 +12,7 @@ function getThumbnail(item: {} | undefined) {
   }
 }
 
-
+new ({
 el: "#app",
 data() {
 return {
@@ -37,7 +37,7 @@ this.currentPage += 1
 }
 }
 }
-
+})
 
 </script>
 
