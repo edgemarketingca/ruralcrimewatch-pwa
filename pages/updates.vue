@@ -32,7 +32,7 @@ function getThumbnail(item: {} | undefined) {
        
       <!-- Goal: display full list of news articles, with pagination -->
       
-      <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 border border-primary">
+      <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg border border-primary bg-white ">
         
           <div class="pb-4">
             <img
