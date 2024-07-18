@@ -48,13 +48,18 @@ function getThumbnail(item: {} | undefined) {
             <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
             {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
           </p>
-          /* <NuxtLink
-            class="absolute right-4 bottom-4  -translate-x-1/2 bg-primary p-2 rounded-lg opacity-80 group-hover:opacity-100 transition-all !text-black"
-            :to="item.path"
-          >
+          <p class="absolute right-4 bottom-4 text-xs flex items-center gap-1 justify-right">
+            <NuxtLink :to="item.path">
+              Read More <Icon class="w-5 h-5" name="ph:arrow-right-double-fill" />
+            </NuxtLink>
+          </p>
+          <!--
+          <NuxtLink
+            class="absolute right-1/2 bottom-4  -translate-x-1/2 bg-primary p-2 rounded-lg opacity-80 group-hover:opacity-100 transition-all !text-black"
+            :to="item.path">
             Read more
           </NuxtLink>
-          
+          -->
         </div>
       </NuxtLink>
       </Slide>
