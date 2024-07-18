@@ -28,39 +28,44 @@ function getThumbnail(item: {} | undefined) {
       <div />
     </div>
 
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 place-items-center items-stretch text-white pb-10">
     <section class="grid grid-cols-1 gap-6">
        
       <!-- Goal: display full list of news articles, with pagination -->
       
-      <div v-for="item in newslist" :key="item.path" class="group w-full h-96 rounded-lg relative">
-        <div class="grid grid-cols-5">
-        <img
+      <div v-for="item in newslist" :key="item.path" class="w-full relative lg:col-span-3">
+      <div class="group grid">
+        
+          <div class="relative group grid w-full lg:col-span-1 col-span-3 flex-col">
+            <img
             v-if="getThumbnail(item.custom_attributes?.data)"
             class="rounded-lg opacity-50 object-cover w-full h-full"
             :alt="item.name"
             :src="getThumbnail(item.custom_attributes.data)?.url"
-          >
-        </div>
-        <div class="grid grid-cols-7">
-          <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-2xl">
-              {{ item.name }}
-          </h2>
-          <p class="line-clamp-2 text-xs text-gray-200 drop-shadow-lg">
-            {{ item.description }}
-          </p>
-          <p class="text-xs flex items-center gap-1 justify-center">
-            <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
-            {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
-           | 
-            <NuxtLink :to="item.path">
-              Read More <Icon class="w-5 h-5" name="mdi:chevron-double-right" />
-            </NuxtLink>
-          </p>
-        </div>
-        
+            >
+          </div>
+          <div class="relative group grid w-full lg:col-span-1 col-span-3 flex-col>
+            <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-2xl">
+                {{ item.name }}
+            </h2>
+            <p class="line-clamp-2 text-xs text-gray-200 drop-shadow-lg">
+              {{ item.description }}
+            </p>
+            <p class="text-xs flex items-center gap-1 justify-center">
+              <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
+              {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
+             | 
+              <NuxtLink :to="item.path">
+                Read More <Icon class="w-5 h-5" name="mdi:chevron-double-right" />
+              </NuxtLink>
+            </p>
+          </div>
+          
+      </div>  
       </div>
       
     </section>
+    </div>
         
     <hr />
 
