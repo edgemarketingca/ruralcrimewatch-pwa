@@ -14,7 +14,7 @@ function getThumbnail(item: {} | undefined) {
 </script>
 
 <template>
-  <main class="list-page text-black dark:text-white">
+  <main class="content-page list-page text-black dark:text-white"> 
     
     <div class="sticky top-4 z-40 flex justify-between items-center bg-primary p-2 rounded-lg mb-6">
       <NuxtLink title="Home" class="p-2" to="/">
@@ -57,9 +57,8 @@ function getThumbnail(item: {} | undefined) {
               <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
               {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
                | 
-              <NuxtLink :to="item.path" title="item.title">
-                Read More <Icon class="w-5 h-5" name="mdi:chevron-double-right" />
-              </NuxtLink>
+              <NuxtLink :to="item.path" title="item.title">Read More</NuxtLink> <Icon class="w-5 h-5" name="mdi:chevron-double-right" />
+              
             </p>
           </div>
           
