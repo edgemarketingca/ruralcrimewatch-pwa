@@ -39,7 +39,7 @@ function getThumbnail(item: {} | undefined) {
     
     <section class="grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-8 place-items-center items-stretch text-black dark:text-white pb-10">
        
-      <!-- Goal: display full list of news articles, with pagination--?
+      <!-- Goal: display full list of news articles, with pagination -->
       
       <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg bg-white dark:bg-neutral-800">
         
