@@ -25,5 +25,5 @@ function getFile(file: string) {
 </template>
 
 <style lang="scss">
-a { text-decoration: underline; font-weight: bold; }
+.content-page a { text-decoration: underline; font-weight: bold; }
 </style>
