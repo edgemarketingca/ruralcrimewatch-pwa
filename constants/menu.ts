@@ -9,8 +9,8 @@ export const menu: Menu[] = [
     _path: '/',
   },
   {
-    title: 'News &amp; Updates',
-    metatitle: 'News &amp; Updates',
+    title: 'News & Updates',
+    metatitle: 'News & Updates',
     icon: 'ph:newspaper-duotone',
     target: 'self',
     _path: '/news',
@@ -34,7 +34,7 @@ export const mobileMenu: Menu[] = [
   },
   {
     title: 'News',
-    metatitle: 'News &amp; Updates',
+    metatitle: 'News & Updates',
     icon: 'ph:newspaper-duotone',
     target: 'self',
     _path: '/news',
