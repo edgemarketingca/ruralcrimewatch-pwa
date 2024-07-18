@@ -11,7 +11,7 @@ import { version } from '~/package.json'
       </NuxtLink>
       <div>
         <span class="font-bold text-xl text-black">
-          News & Updates from the APRCWA
+          News &amp; Updates from the APRCWA
         </span>
       </div>
       <div />
