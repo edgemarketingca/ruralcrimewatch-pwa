@@ -9,6 +9,13 @@ export const menu: Menu[] = [
     _path: '/',
   },
   {
+    title: 'News Updates',
+    metatitle: 'News Updates',
+    icon: 'ph:newspaper-duotone',
+    target: 'self',
+    _path: '/news',
+  },
+  {
     title: 'RCMP Crime Map',
     metatitle: 'RCMP Crime Map',
     icon: 'ph:map-trifold-duotone',
@@ -26,12 +33,21 @@ export const mobileMenu: Menu[] = [
     _path: '/',
   },
   {
+    title: 'News',
+    metatitle: 'News Updates',
+    icon: 'ph:newspaper-duotone',
+    target: 'self',
+    _path: '/news',
+  },
+  {
     title: 'Crime Map',
     metatitle: 'Crime Map',
     icon: 'ph:map-trifold-duotone',
     target: 'self',
     _path: '/map',
   },
+  
+  /*
   {
     title: 'Newsletter',
     metatitle: 'Newsletter',
@@ -39,4 +55,5 @@ export const mobileMenu: Menu[] = [
     target: '_blank',
     _path: 'https://www.ruralcrimewatch.ab.ca/join-our-newsletter',
   },
+  */
 ]
