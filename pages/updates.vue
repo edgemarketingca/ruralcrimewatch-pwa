@@ -12,33 +12,6 @@ function getThumbnail(item: {} | undefined) {
   }
 }
 
-new ({
-el: "#app",
-data() {
-return {
-posts: newslist,
-currentPage: 1,
-postsPerPage: 10,
-}
-},
-computed: {
-// computed property to set the items visible on current page
-currentPagePosts() {
-return this.posts.slice((this.currentPage - 1) * this.postsPerPage, this.currentPage * this.postsPerPage)
-}
-},
-methods: {
-// pagination function
-setCurrentPage(direction) {
-if (direction === -1 && this.currentPage > 1) {
-this.currentPage -= 1
-} else if (direction === 1 && this.currentPage < this.posts.length / this.postsPerPage) {
-this.currentPage += 1
-}
-}
-}
-})
-
 </script>
 
 <template>
@@ -66,7 +39,7 @@ this.currentPage += 1
     
     <section class="grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-8 place-items-center items-stretch text-black dark:text-white pb-10">
        
-      <!-- Goal: display full list of news articles, with pagination
+      <!-- Goal: display full list of news articles, with pagination--?
       
       <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg bg-white dark:bg-neutral-800">
         
@@ -99,48 +72,7 @@ this.currentPage += 1
           </div>
           
       </div>  
-       -->
-      
-      <div id="app">
-        <button @click="setCurrentPage(-1)">PREV</button>
-        <button @click="setCurrentPage(1)">NEXT</button><br /> Current page / max page: {{ currentPage }} / {{ Math.ceil(posts.length / postsPerPage) }}<br />
-        <label>Set posts per page: <input v-model="postsPerPage" type="text" /></label>
-        <hr />
-        <!-- the v-for only lists items from the computed property -->
-        <div v-for="post in currentPagePosts" :key="post.id"  class="grid-cols-1 p-4 rounded-lg bg-white dark:bg-neutral-800">
-          <!-- ID: {{ post.id }} Title: {{ post.title }} -->
-
-          <div class="relative mb-4 h-48 rounded-lg border border-gray dark:border-neutral-800">
-            <NuxtLink :to="post.path">
-              <img
-              v-if="getThumbnail(post.custom_attributes?.data)"
-              class="absolute inset-0 rounded-lg opacity-100 object-cover w-full h-full"
-              :alt="post.name"
-              :src="getThumbnail(post.custom_attributes.data)?.url"
-              >
-            </NuxtLink>
-          </div>
-          <div class="p-2">
-            <h3 class="titleheading mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
-                <NuxtLink :to="post.path">
-                  {{ post.name }}
-                </NuxtLink>
-            </h3>
-            <p class="pb-4">
-              {{ post.description }}
-            </p>
-            <p class="flex items-center gap-1">
-              <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
-              {{ useDateFormat(new Date(post.date_added), 'MMMM D, YYYY').value }}
-               | 
-              <NuxtLink :to="post.path" title="Read More">Read More</NuxtLink> <Icon class="w-5 h-5" name="mdi:chevron-double-right" />
-              
-            </p>
-          </div>
-          
-        </div>
-      </div>
-      
+            
     </section>
     
   </main>
