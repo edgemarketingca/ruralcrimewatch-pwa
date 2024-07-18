@@ -78,9 +78,9 @@ function getThumbnail(item: {} | undefined) {
 </template>
 
 <style lang="scss">
-.content-page.list-page {
+.list-page {
   .titleheading a,
-  a.titleheading { text-decortation: none !important; }
+  a.titleheading { text-decoration: none !important; }
   
   .toc {
     h2, h3 {
