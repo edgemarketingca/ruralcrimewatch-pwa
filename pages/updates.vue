@@ -1,5 +1,16 @@
 <script setup lang="ts">
 import { version } from '~/package.json'
+
+const { news, pending } = await useNewsList()
+  
+function getThumbnail(item: {} | undefined) {
+  if (item) {
+    const thumbnail: any = Object.values(item).find((value: any) => value.handle === 'thumbnail')
+    if (thumbnail) {
+      return thumbnail?.value?.data
+    }
+  }
+}
 </script>
 
 <template>
@@ -17,9 +28,37 @@ import { version } from '~/package.json'
       <div />
     </div>
 
-    <section class="grid grid-cols-12 gap-6">
+    <section class="grid grid-cols-1 gap-6">
        
       <!-- Goal: display full list of news articles, with pagination -->
+      
+      <div v-for="item in news" :key="item.path" class="group w-full h-96 rounded-lg relative">
+        <div class=" class="grid grid-cols-5">
+        <img
+            v-if="getThumbnail(item.custom_attributes?.data)"
+            class="rounded-lg opacity-50 object-cover w-full h-full"
+            :alt="item.name"
+            :src="getThumbnail(item.custom_attributes.data)?.url"
+          >
+        </div>
+        <div class=" class="grid grid-cols-7">
+          <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-2xl">
+              {{ item.name }}
+          </h2>
+          <p class="line-clamp-2 text-xs text-gray-200 drop-shadow-lg">
+            {{ item.description }}
+          </p>
+          <p class="text-xs flex items-center gap-1 justify-center">
+            <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
+            {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
+           | 
+            <NuxtLink :to="item.path">
+              Read More <Icon class="w-5 h-5" name="mdi:chevron-double-right" />
+            </NuxtLink>
+          </p>
+        </div>
+        
+      </div>
       
     </section>
         
