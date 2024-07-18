@@ -12,32 +12,32 @@ function getThumbnail(item: {} | undefined) {
   }
 }
 
-new Vue({
-  el: "#app",
-  data() {
-    return {
-      posts: newslist,
-      currentPage: 1,
-      postsPerPage: 10,
-    }
-  },
-  computed: {
-    // computed property to set the items visible on current page
-    currentPagePosts() {
-      return this.posts.slice((this.currentPage - 1) * this.postsPerPage, this.currentPage * this.postsPerPage)
-    }
-  },
-  methods: {
-    // pagination function
-    setCurrentPage(direction) {
-      if (direction === -1 && this.currentPage > 1) {
-        this.currentPage -= 1
-      } else if (direction === 1 && this.currentPage < this.posts.length / this.postsPerPage) {
-        this.currentPage += 1
-      }
-    }
-  }
-})
+
+el: "#app",
+data() {
+return {
+posts: newslist,
+currentPage: 1,
+postsPerPage: 10,
+}
+},
+computed: {
+// computed property to set the items visible on current page
+currentPagePosts() {
+return this.posts.slice((this.currentPage - 1) * this.postsPerPage, this.currentPage * this.postsPerPage)
+}
+},
+methods: {
+// pagination function
+setCurrentPage(direction) {
+if (direction === -1 && this.currentPage > 1) {
+this.currentPage -= 1
+} else if (direction === 1 && this.currentPage < this.posts.length / this.postsPerPage) {
+this.currentPage += 1
+}
+}
+}
+
 
 </script>
 
@@ -150,43 +150,7 @@ new Vue({
 .list-page {
   .titleheading a,
   a.titleheading { text-decoration: none !important; }
-  
-  .toc {
-    h2, h3 {
-      margin-bottom: 0;
-      font-size: 14px;
-    }
-  }
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-  h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-  h3 {
-    font-size: 1.75rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-  }
-  h4 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-  }
-  h5 {
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-  }
-  h6 {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-  }
+ 
   p + p {
     margin-bottom: 1rem;
   }
