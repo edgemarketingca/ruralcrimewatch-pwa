@@ -50,7 +50,7 @@ function getThumbnail(item: {} | undefined) {
           </p>
           <p class="absolute right-4 bottom-4 text-xs flex items-center gap-1 justify-right">
             <NuxtLink :to="item.path">
-              Read More <Icon class="w-5 h-5" name="ph:arrow-right-double-fill" />
+              Read More <Icon class="w-5 h-5" name="mdi:chevron-double-right" />
             </NuxtLink>
           </p>
           <!--
