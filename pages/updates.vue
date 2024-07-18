@@ -28,7 +28,7 @@ function getThumbnail(item: {} | undefined) {
       <div />
     </div>
 
-    <section class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 place-items-center items-stretch text-black pb-10">
+    <section class="grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-8 place-items-center items-stretch text-black pb-10">
        
       <!-- Goal: display full list of news articles, with pagination -->
       
