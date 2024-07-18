@@ -33,14 +33,14 @@ export const mobileMenu: Menu[] = [
     _path: '/',
   },
   {
-    title: 'News',
+    title: '', //'News',
     metatitle: 'News & Updates',
     icon: 'ph:newspaper-duotone',
     target: 'self',
     _path: '/news',
   },
   {
-    title: 'Crime Map',
+    title: '', //'Crime Map',
     metatitle: 'Crime Map',
     icon: 'ph:map-trifold-duotone',
     target: 'self',
