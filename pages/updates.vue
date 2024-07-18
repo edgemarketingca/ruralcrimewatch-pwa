@@ -79,7 +79,7 @@ function getThumbnail(item: {} | undefined) {
 
 <style lang="scss">
 .list-page {
-  a.titleheading { text-decortation: none !important; }
+  .titleheading a { text-decortation: none !important; }
   .toc {
     h2, h3 {
       margin-bottom: 0;
