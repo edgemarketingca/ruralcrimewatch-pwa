@@ -42,7 +42,7 @@ function getThumbnail(item: {} | undefined) {
             :src="getThumbnail(item.custom_attributes.data)?.url"
             >
           </div>
-          <div class="p-4">
+          <div class="p-2">
             <h3 class="mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
                 {{ item.name }}
             </h3>
