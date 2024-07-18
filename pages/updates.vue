@@ -32,21 +32,21 @@ function getThumbnail(item: {} | undefined) {
        
       <!-- Goal: display full list of news articles, with pagination -->
       
-      <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg bg-white dark:bg-neutral-800 ">
+      <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg bg-white dark:bg-neutral-800">
         
           <div class="relative mb-4 h-48 rounded-lg border border-gray dark:border-neutral-800">
-            <NuxtLink :to="item.path" :title="item.name">
+            <NuxtLink :to="item.path" :title="item.title">
               <img
               v-if="getThumbnail(item.custom_attributes?.data)"
               class="absolute inset-0 rounded-lg opacity-100 object-cover w-full h-full"
               :alt="item.name"
               :src="getThumbnail(item.custom_attributes.data)?.url"
               >
-              </NuxtLink>
+            </NuxtLink>
           </div>
           <div class="p-2">
             <h3 class="mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
-                <NuxtLink :to="item.path" :title="item.name">
+                <NuxtLink :to="item.path" :title="item.title">
                   {{ item.name }}
                 </NuxtLink>
             </h3>
@@ -56,8 +56,8 @@ function getThumbnail(item: {} | undefined) {
             <p class="flex items-center gap-1">
               <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
               {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
-             | 
-              <NuxtLink :to="item.path" :title="Read More">
+               | 
+              <NuxtLink :to="item.path" :title="item.title">
                 Read More <Icon class="w-5 h-5" name="mdi:chevron-double-right" />
               </NuxtLink>
             </p>
@@ -71,7 +71,7 @@ function getThumbnail(item: {} | undefined) {
 
     <section class="grid grid-cols-1 gap-2 p-4">
     
-      <NuxtLink to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter" target="_blank" class="bg-primary p-2 rounded-lg text-center !text-black opacity-80 hover:opacity-100 transition-all-ease">
+      <NuxtLink title="Signup for our Newsletter" to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter" target="_blank" class="bg-primary p-2 rounded-lg text-center !text-black opacity-80 hover:opacity-100 transition-all-ease" external>
         Signup for our Newsletter - Join Today!
       </NuxtLink>
       
