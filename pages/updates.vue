@@ -34,17 +34,21 @@ function getThumbnail(item: {} | undefined) {
       
       <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg bg-white dark:bg-neutral-800 ">
         
-          <div class="relative mb-4 h-48 rounded-lg border border-gray">
-            <img
-            v-if="getThumbnail(item.custom_attributes?.data)"
-            class="absolute inset-0 rounded-lg opacity-100 object-cover w-full h-full"
-            :alt="item.name"
-            :src="getThumbnail(item.custom_attributes.data)?.url"
-            >
+          <div class="relative mb-4 h-48 rounded-lg border border-gray dark:border-neutral-800">
+            <NuxtLink :to="item.path" :title="item.name">
+              <img
+              v-if="getThumbnail(item.custom_attributes?.data)"
+              class="absolute inset-0 rounded-lg opacity-100 object-cover w-full h-full"
+              :alt="item.name"
+              :src="getThumbnail(item.custom_attributes.data)?.url"
+              >
+              </NuxtLink>
           </div>
           <div class="p-2">
             <h3 class="mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
-                {{ item.name }}
+                <NuxtLink :to="item.path" :title="item.name">
+                  {{ item.name }}
+                </NuxtLink>
             </h3>
             <p class="pb-4">
               {{ item.description }}
@@ -53,7 +57,7 @@ function getThumbnail(item: {} | undefined) {
               <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
               {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
              | 
-              <NuxtLink :to="item.path">
+              <NuxtLink :to="item.path" :title="Read More">
                 Read More <Icon class="w-5 h-5" name="mdi:chevron-double-right" />
               </NuxtLink>
             </p>
