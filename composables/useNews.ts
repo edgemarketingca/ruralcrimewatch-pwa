@@ -5,7 +5,7 @@ export async function useNews() {
 
   const { data: news, pending, error } = await useFetch('/api/pages', {
     method: 'POST',
-    transform: (data) => data.filter((page: any) => page.path.includes('/news/articles/'))
+    transform: (data) => data.filter((page: any) => page.path.includes('/news/articles/')).slice(0,10)
   })
 
   // const { data: news, pending, error } = await useFetch('https://www.ruralcrimewatch.ab.ca/rss/bulletinboard', {
