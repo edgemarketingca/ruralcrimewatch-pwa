@@ -30,7 +30,7 @@ function getThumbnail(item: {} | undefined) {
 
     <section class="grid grid-cols-1 gap-2 p-4">
     
-      <NuxtLink title="Signup for our Newsletter" to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter" target="_blank" class="bg-primary p-2 rounded-lg text-center !text-black opacity-80 hover:opacity-100 transition-all-ease" external>
+      <NuxtLink title="Signup for our Newsletter" to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter" target="_blank" class="titleheading bg-gray-200 p-2 rounded-lg text-center !text-black hover:bg-primary transition" external>
         Signup for our Newsletter - Join Today!
       </NuxtLink>
       
@@ -79,7 +79,9 @@ function getThumbnail(item: {} | undefined) {
 
 <style lang="scss">
 .list-page {
-  .titleheading a { text-decortation: none !important; }
+  .titleheading a,
+  a.titleheading { text-decortation: none !important; }
+  
   .toc {
     h2, h3 {
       margin-bottom: 0;
