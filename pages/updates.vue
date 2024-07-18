@@ -50,7 +50,7 @@ function getThumbnail(item: {} | undefined) {
             <p class="line-clamp-2 text-xs text-gray-200 drop-shadow-lg">
               {{ item.description }}
             </p>
-            <p class="text-xs flex items-center gap-1 justify-center">
+            <p class="text-xs flex items-center gap-1 py-4">
               <Icon class="w-5 h-5" name="ph:calendar-blank-duotone" />
               {{ useDateFormat(new Date(item.date_added), 'MMMM D, YYYY').value }}
              | 
