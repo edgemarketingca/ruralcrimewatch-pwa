@@ -14,7 +14,6 @@ import { version } from '~/package.json'
           News &amp; Updates from the APRCWA
         </span>
       </div>
-      <div />
     </div>
 
     <section class="grid grid-cols-12 gap-6">
