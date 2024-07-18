@@ -44,7 +44,7 @@ function getThumbnail(item: {} | undefined) {
             :src="getThumbnail(item.custom_attributes.data)?.url"
             >
           </div>
-          <div class="relative group grid w-full lg:col-span-2 col-span-3 flex-col>
+          <div class="relative group grid w-full lg:col-span-2 col-span-3 flex-col">
             <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-2xl">
                 {{ item.name }}
             </h2>
