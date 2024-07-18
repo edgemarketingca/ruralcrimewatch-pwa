@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { version } from '~/package.json'
 
-const { news, pending } = await useNewsList()
+const { newslist, pendinglist } = await useNewsList()
   
 function getThumbnail(item: {} | undefined) {
   if (item) {
@@ -32,7 +32,7 @@ function getThumbnail(item: {} | undefined) {
        
       <!-- Goal: display full list of news articles, with pagination -->
       
-      <div v-for="item in news" :key="item.path" class="group w-full h-96 rounded-lg relative">
+      <div v-for="item in newslist" :key="item.path" class="group w-full h-96 rounded-lg relative">
         <div class=" class="grid grid-cols-5">
         <img
             v-if="getThumbnail(item.custom_attributes?.data)"
