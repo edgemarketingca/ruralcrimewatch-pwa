@@ -18,7 +18,7 @@ function getThumbnail(item: {} | undefined) {
 
 <template>
   <main class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 place-items-center items-stretch text-white pb-10">
-    <Carousel :autoplay="4500" :wrapAround="true" :pauseAutoplayOnHover="true" class="lg:col-span-3 col-span-3 w-full">
+    <Carousel :autoplay="8000" :wrapAround="true" :pauseAutoplayOnHover="true" class="lg:col-span-3 col-span-3 w-full">
       <Slide v-for="item in news" :key="item.path" class="group w-full h-80 rounded-lg p-4 relative">
         <div class="bg-neutral-800 absolute inset-0 -z-20 mx-2 rounded-lg" />
         <div class="absolute inset-0 pointer-events-none -z-10 mx-2 rounded-lg group-hover:border border-primary">
