@@ -28,6 +28,14 @@ function getThumbnail(item: {} | undefined) {
       <div />
     </div>
 
+    <section class="grid grid-cols-1 gap-2 p-4">
+    
+      <NuxtLink title="Signup for our Newsletter" to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter" target="_blank" class="bg-primary p-2 rounded-lg text-center !text-black opacity-80 hover:opacity-100 transition-all-ease" external>
+        Signup for our Newsletter - Join Today!
+      </NuxtLink>
+      
+    </section>
+    
     <section class="grid lg:grid-cols-3 md:grid-cols-1 grid-cols-1 gap-8 place-items-center items-stretch text-black dark:text-white pb-10">
        
       <!-- Goal: display full list of news articles, with pagination -->
@@ -35,7 +43,7 @@ function getThumbnail(item: {} | undefined) {
       <div v-for="item in newslist" :key="item.path" class="grid-cols-1 p-4 rounded-lg bg-white dark:bg-neutral-800">
         
           <div class="relative mb-4 h-48 rounded-lg border border-gray dark:border-neutral-800">
-            <NuxtLink :to="item.path" title="item.title">
+            <NuxtLink :to="item.path">
               <img
               v-if="getThumbnail(item.custom_attributes?.data)"
               class="absolute inset-0 rounded-lg opacity-100 object-cover w-full h-full"
@@ -46,7 +54,7 @@ function getThumbnail(item: {} | undefined) {
           </div>
           <div class="p-2">
             <h3 class="titleheading mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
-                <NuxtLink :to="item.path" title="item.title">
+                <NuxtLink :to="item.path">
                   {{ item.name }}
                 </NuxtLink>
             </h3>
@@ -65,23 +73,13 @@ function getThumbnail(item: {} | undefined) {
       </div>  
       
     </section>
-        
-    <hr />
-
-    <section class="grid grid-cols-1 gap-2 p-4">
     
-      <NuxtLink title="Signup for our Newsletter" to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter" target="_blank" class="bg-primary p-2 rounded-lg text-center !text-black opacity-80 hover:opacity-100 transition-all-ease" external>
-        Signup for our Newsletter - Join Today!
-      </NuxtLink>
-      
-    </section>
-  
   </main>
 </template>
 
 <style lang="scss">
 .list-page {
-  a.titleheading { text-decortation: none; }
+  a.titleheading { text-decortation: none !important; }
   .toc {
     h2, h3 {
       margin-bottom: 0;
