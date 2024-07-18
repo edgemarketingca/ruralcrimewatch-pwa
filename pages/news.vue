@@ -25,13 +25,10 @@ import { version } from '~/package.json'
         
     <hr />
 
-    <section class="grid grid-cols-12 gap-6">
-       
-      <h2 class="text-3xl text-primary">
-        Signup for our Newsletter: 
-      </h2>
-      <NuxtLink to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter" target="_blank" class="bg-primary p-2 rounded-lg opacity-80 group-hover:opacity-100 transition-all !text-black">
-        Join Today!
+    <section class="grid grid-cols-1 gap-2 p-4">
+    
+      <NuxtLink to="https://www.ruralcrimewatch.ab.ca/join-our-newsletter" target="_blank" class="bg-primary p-2 rounded-lg opacity-80 group-hover:opacity-100 transition-all text-center !text-black">
+        Signup for our Newsletter - Join Today!
       </NuxtLink>
       
     </section>
