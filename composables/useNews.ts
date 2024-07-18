@@ -39,15 +39,15 @@ export async function useNews() {
 
 export async function useNewsList() {
 
-  const { data: news, pending, error } = await useFetch('/api/pages', {
+  const { data: newslist, pendinglist, errorlist } = await useFetch('/api/pages', {
     method: 'POST',
     transform: (data) => data.filter((page: any) => page.path.includes('/news/articles/'))
   })
 
   return {
-    news,
-    error,
-    pending,
+    newslist,
+    errorlist,
+    pendinglist,
   }
 }
 
