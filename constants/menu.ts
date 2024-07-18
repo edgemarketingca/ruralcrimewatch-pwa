@@ -13,7 +13,7 @@ export const menu: Menu[] = [
     metatitle: 'News & Updates',
     icon: 'ph:newspaper-duotone',
     target: 'self',
-    _path: '/news',
+    _path: '/updates',
   },
   {
     title: 'RCMP Crime Map',
@@ -37,7 +37,7 @@ export const mobileMenu: Menu[] = [
     metatitle: 'News & Updates',
     icon: 'ph:newspaper-duotone',
     target: 'self',
-    _path: '/news',
+    _path: '/updates',
   },
   {
     title: '', //'Crime Map',
