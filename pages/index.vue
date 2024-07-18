@@ -55,13 +55,13 @@ function getThumbnail(item: {} | undefined) {
         </div>
       </Slide>
     </Carousel>
+    <AppCard v-for="item of crime" :key="item._path" :item="item" />
     <AppCard :item="{
       _path: '/map',
       title: 'RCMP Crime Map',
       description: 'Keep current with your region\'s recent thefts, mischief, and break-and-enter reports.',
       image: '/rcmp-banner.webp'
     }" />
-    <AppCard v-for="item of crime" :key="item._path" :item="item" />
     <AppCard class="lg:col-span-2" :item="{
       _path: 'https://ab.211.ca/',
       title: `Get Local Support, You're Not Alone`,
