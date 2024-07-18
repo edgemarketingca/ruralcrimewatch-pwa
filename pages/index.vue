@@ -37,7 +37,7 @@ function getThumbnail(item: {} | undefined) {
           >
           <div class="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-t from-black/80 via-black/50" />
         </div>
-        <div class="p-4 flex flex-col gap-4">
+        <div class="p-8 flex flex-col gap-4">
           <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-2xl">
               {{ item.name }}
           </h2>
@@ -110,5 +110,19 @@ function getThumbnail(item: {} | undefined) {
 
 .carousel__viewport {
   @apply rounded-lg;
+}
+.carousel__icon { 
+  fill: #fff; 
+}
+.dark .carousel__pagination-button:after { 
+  background-color: #777;
+}
+.dark .carousel__pagination-button--active:after, 
+.carousel__pagination-button--active:after {
+  background-color: #facc15;
+}
+.dark .carousel__pagination-button:hover:after,
+.carousel__pagination-button:hover:after {
+  background-color: #e5e7eb;
 }
 </style>
