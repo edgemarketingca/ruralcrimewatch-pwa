@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Carousel, Slide } from 'vue3-carousel'
+import { Carousel, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 
 const { data: crime } = await useAsyncData('crime', () => queryContent('/crime/').where({ _dir: 'crime' }).find())
@@ -18,7 +18,7 @@ function getThumbnail(item: {} | undefined) {
 
 <template>
   <main class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 place-items-center items-stretch text-white pb-10">
-    <Carousel :autoplay="8000" :wrapAround="true" :pauseAutoplayOnHover="true" indicators controls class="lg:col-span-3 col-span-3 w-full">
+    <Carousel :autoplay="8000" :wrapAround="true" :pauseAutoplayOnHover="true" class="lg:col-span-3 col-span-3 w-full">
       <Slide v-for="item in news" :key="item.path" class="group w-full h-80 rounded-lg p-4 relative">
         <NuxtLink :to="item.path">
           <div class="bg-neutral-800 absolute inset-0 -z-20 mx-2 rounded-lg" />
@@ -56,6 +56,10 @@ function getThumbnail(item: {} | undefined) {
         </div>
       </NuxtLink>
       </Slide>
+      <template #addons>
+        <Navigation />
+        <Pagination />
+      </template>
     </Carousel>
     <AppCard v-for="item of crime" :key="item._path" :item="item" />
     <AppCard :item="{
