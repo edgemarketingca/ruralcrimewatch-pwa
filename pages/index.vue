@@ -20,8 +20,9 @@ function getThumbnail(item: {} | undefined) {
   <main class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 place-items-center items-stretch text-white pb-10">
     <Carousel :autoplay="8000" :wrapAround="true" :pauseAutoplayOnHover="true" class="lg:col-span-3 col-span-3 w-full">
       <Slide v-for="item in news" :key="item.path" class="group w-full h-80 rounded-lg p-4 relative">
-        <div class="bg-neutral-800 absolute inset-0 -z-20 mx-2 rounded-lg" />
-        <div class="absolute inset-0 pointer-events-none -z-10 mx-2 rounded-lg group-hover:border border-primary">
+        <NuxtLink :to="item.path">
+          <div class="bg-neutral-800 absolute inset-0 -z-20 mx-2 rounded-lg" />
+          <div class="absolute inset-0 pointer-events-none -z-10 mx-2 rounded-lg group-hover:border border-primary">
           <!-- <img
             v-if="item.thumbnail"
             class="rounded-lg opacity-50 object-cover w-full h-full"
@@ -37,7 +38,7 @@ function getThumbnail(item: {} | undefined) {
         </div>
         <div class="p-4 flex flex-col gap-4">
           <h2 class="mb-2 block font-sans leading-[1.5] tracking-normal text-white antialiased font-bold drop-shadow-lg text-3xl">
-            {{ item.name }}
+              {{ item.name }}
           </h2>
           <p class="text-sm drop-shadow-lg">
             {{ item.description }}
@@ -53,6 +54,7 @@ function getThumbnail(item: {} | undefined) {
             Read more
           </NuxtLink>
         </div>
+      </NuxtLink>
       </Slide>
     </Carousel>
     <AppCard v-for="item of crime" :key="item._path" :item="item" />
