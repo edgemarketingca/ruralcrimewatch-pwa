@@ -82,7 +82,10 @@ function getThumbnail(item: {} | undefined) {
 .list-page {
   .titleheading a,
   a.titleheading { text-decoration: none !important; }
- 
+  h3.text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
   p + p {
     margin-bottom: 1rem;
   }
