@@ -41,7 +41,7 @@ export async function useNewsList() {
 
   const { data: newslist, pendinglist, errorlist } = await useFetch('/api/pages', {
     method: 'POST',
-    transform: (data) => data.filter((page: any) => page.path.includes('/news/articles/'))
+    transform: (data) => data.filter((page: any) => page.path.includes('/news/articles/')).slice(0,30)
   })
 
   return {
