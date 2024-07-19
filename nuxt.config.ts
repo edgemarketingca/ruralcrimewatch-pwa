@@ -2,7 +2,6 @@ export default defineNuxtConfig({
   
   pwa: {
     manifest: {
-      "id": "Alberta Provincial Rural Crime Watch"
       "name": "Alberta Provincial Rural Crime Watch",
       "short_name": "Rural Crime Watch",
       "description": "Alberta Rural Crime Watch partners with the RCMP to help reduce crime in rural Alberta communities and build safer neighbourhoods.",
@@ -10,12 +9,8 @@ export default defineNuxtConfig({
       "theme_color": "#000000",
       "lang": "en-us",
       "start_url": "/",
-      "scope": "/",
       "dir": "ltr",
       "display": "standalone",
-      "orientation": "portrait-primary",
-      "prefer_related_applications": false,
-      "display_override": ["window-controls-overlay"],
       "icons": [
         {
           "src": "icons/512x512.png",
@@ -37,27 +32,7 @@ export default defineNuxtConfig({
           "sizes": "24x24",
           "type": "image/png"
         }
-      ],
-      "categories": [
-        "education",
-        "government",
-        "lifestyle",
-        "news",
-        "security"
-      ],
-      "features": [
-        "Cross Platform",
-        "fast",
-        "simple"
-      ],
-      "screenshots": [
-        {
-        /*  "src": "assets/screenshots/screen.png",
-          "sizes": "1617x1012",
-          "type": "image/png"
-        */
-        }
-      ] 
+      ]
     }
   },
       
