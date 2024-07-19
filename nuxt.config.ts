@@ -2,7 +2,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: pkg.name,
+      title: "Alberta Provincial Rural Crime Watch",
       meta: [
         { name: 'robots', content: 'index, follow' },
       ], 
