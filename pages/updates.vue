@@ -54,7 +54,7 @@ function getThumbnail(item: {} | undefined) {
             </NuxtLink>
           </div>
           <div class="p-2">
-            <h3 class="titleheading mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
+            <h3 class="text-2xl titleheading mb-2 block font-sans leading-[1] tracking-normal antialiased font-bold">
                 <NuxtLink :to="item.path">
                   {{ item.name }}
                 </NuxtLink>
