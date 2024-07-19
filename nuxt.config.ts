@@ -14,7 +14,7 @@ export default defineNuxtConfig({
       
     },
     manifest: {
-      "id": "Alberta Provincial Rural Crime Watch"
+      "id": "Alberta Provincial Rural Crime Watch",
       "name": "Alberta Provincial Rural Crime Watch",
       "short_name": "Rural Crime Watch",
       "description": "Alberta Rural Crime Watch partners with the RCMP to help reduce crime in rural Alberta communities and build safer neighbourhoods.",
