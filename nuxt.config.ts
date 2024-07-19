@@ -1,41 +1,19 @@
 export default defineNuxtConfig({
   
-  pwa: {
-    manifest: {
-      "name": "Alberta Provincial Rural Crime Watch",
-      "short_name": "Rural Crime Watch",
-      "description": "Alberta Rural Crime Watch partners with the RCMP to help reduce crime in rural Alberta communities and build safer neighbourhoods.",
-      "background_color": "#000000",
-      "theme_color": "#000000",
-      "lang": "en-us",
-      "start_url": "/",
-      "dir": "ltr",
-      "display": "standalone",
-      "icons": [
-        {
-          "src": "icons/512x512.png",
-          "sizes": "512x512",
-          "type": "image/png"
-        },
-        {
-          "src": "icons/192x192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-        },
-        {
-          "src": "icons/48x48.png",
-          "sizes": "48x48",
-          "type": "image/png"
-        },
-        {
-          "src": "icons/24x24.png",
-          "sizes": "24x24",
-          "type": "image/png"
-        }
-      ]
-    }
-  },
+  app: {
+    head: {
+      meta: [
+        { name: 'robots', content: 'index, follow' },
+      ], 
       
+      link: [
+        { rel: 'favicon', href: '/favicon.ico' },
+      ],
+      
+    },
+    keepalive: true,
+  },
+  
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
@@ -104,20 +82,6 @@ export default defineNuxtConfig({
     size: '1.3rem',
   },
 
-  app: {
-    head: {
-      meta: [
-        { name: 'robots', content: 'index, follow' },
-      ], 
-      
-      link: [
-        { rel: 'favicon', href: '/favicon.ico' },
-      ],
-      
-    },
-    keepalive: true,
-  },
-  
   loadingIndicator: {
     name: '~/composables/loading.html',
     img: '/icons/192.png'
