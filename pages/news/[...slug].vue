@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const route = useRoute()
 
-const { news } = await useNews()
+const { news } = await useNewsList() //useNews has a data limit slice. useNewsList has no limit to data results
 const { article } = await useArticle(news.value?.find((item: any) => item.path === route.path)?.id)
 
 function getFile(file: string) {
