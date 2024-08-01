@@ -19,8 +19,8 @@ const model = useVModel(props, 'open')
         :title="item.title"
         :to="item._path"
         :class="{ 'justify-center': collapsed }"
-        active-class="bg-yellow-400 !text-black"
-        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-yellow-400 hover:text-black dark:hover:text-black transition"
+        active-class="bg-yellow-400"  
+        class="flex items-center p-2 text-gray-900 rounded-lg text-white dark:text-white hover:bg-gray-200 dark:hover:bg-yellow-400 hover:text-black dark:hover:text-black transition"
         @click="model = false"
       >
         <Icon class="w-6 h-6" :name="item.icon ?? 'i-ph:circle'" />
