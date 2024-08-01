@@ -23,7 +23,6 @@ const model = useVModel(props, 'open')
         class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 dark:hover:bg-yellow-400 hover:text-black dark:hover:text-black transition"
         @click="model = false"
       >
-        /* class="flex items-center p-2 text-gray-900 rounded-lg text-white dark:text-white hover:bg-gray-200 dark:hover:bg-yellow-400 hover:text-black dark:hover:text-black transition" */
         
         <Icon class="w-6 h-6" :name="item.icon ?? 'i-ph:circle'" />
         <span v-if="!collapsed" class="ms-3">
