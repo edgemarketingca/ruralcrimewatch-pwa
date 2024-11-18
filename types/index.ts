@@ -38,4 +38,6 @@ export interface Menu {
   title: string
   _path: string
   icon: string
+  metatitle: string
+  target: string
 }

@@ -19,6 +19,7 @@ const model = useVModel(props, 'open')
         :title="item.title"
         :to="item._path"
         :class="{ 'justify-center': collapsed }"
+        :target="item.target"
         active-class="bg-yellow-400 !text-black"
         class="flex items-center p-2 text-white sm:text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-yellow-400 hover:text-black dark:hover:text-black transition"
         @click="model = false"
