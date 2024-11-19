@@ -18,6 +18,7 @@
     "@nuxthq/studio": "^1.0.13",
     "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/tailwindcss": "^6.11.3",
+    "@types/leaflet-draw": "^1.0.11",
     "@types/xml2js": "^0.4.14",
     "@vite-pwa/nuxt": "^0.5.0",
     "@vueuse/nuxt": "^10.7.2",
@@ -29,5 +30,10 @@
     "vue-router": "^4.2.5",
     "vue3-carousel": "^0.3.1",
     "xml2js": "^0.6.2"
+  },
+  "dependencies": {
+    "geo-helpers": "^1.2.6",
+    "leaflet": "^1.9.4",
+    "leaflet-draw": "^1.0.4"
   }
 }
