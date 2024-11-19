@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useWindowScroll } from '@vueuse/core'
+import '@fortawesome/fontawesome-free/css/all.css';
 
 const { y } = useWindowScroll()
 const { collapsed } = useLayout()

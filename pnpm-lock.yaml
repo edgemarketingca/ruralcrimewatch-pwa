@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fortawesome/fontawesome-free':
+        specifier: ^6.7.0
+        version: 6.7.0
       geo-helpers:
         specifier: ^1.2.6
         version: 1.2.6
@@ -17,9 +20,6 @@ importers:
       leaflet-draw:
         specifier: ^1.0.4
         version: 1.0.4
-      leaflet-geometryutil:
-        specifier: ^0.10.3
-        version: 0.10.3
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.6.4
@@ -36,6 +36,9 @@ importers:
       '@nuxtjs/tailwindcss':
         specifier: ^6.11.3
         version: 6.11.3(rollup@4.9.6)
+      '@types/cordova':
+        specifier: ^11.0.3
+        version: 11.0.3
       '@types/leaflet-draw':
         specifier: ^1.0.11
         version: 1.0.11
@@ -1076,6 +1079,10 @@ packages:
     resolution: {integrity: sha512-+KpH+QxZU7O4675t3mnkQKcZZg56u+K/Ct2K+N2AZYNVK8kyeo/bI18tI8aPm3tvNNRyTWfj6s5tnGNlcbQRsA==}
     engines: {node: '>=14'}
 
+  '@fortawesome/fontawesome-free@6.7.0':
+    resolution: {integrity: sha512-lXTP8oiLGM97Aqjn47nod9awKe574HRfCngFizr7FiHTadKTiPkoVn0Mzg+tZBLD1XpE4CRvcF7/UM3g1jyVYw==}
+    engines: {node: '>=6'}
+
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
@@ -1616,6 +1623,9 @@ packages:
   '@tufjs/models@2.0.0':
     resolution: {integrity: sha512-c8nj8BaOExmZKO2DXhDfegyhSGcG9E/mPN3U13L+/PsoWm1uaGiHHjxqSHQiasDBQwDA3aHuw9+9spYAP1qvvg==}
     engines: {node: ^16.14.0 || >=18.0.0}
+
+  '@types/cordova@11.0.3':
+    resolution: {integrity: sha512-kyuRQ40/NWQVhqGIHq78Ehu2Bf9Mlg0LhmSmis6ZFJK7z933FRfYi8tHe/k/0fB+PGfCf95rJC6TO7dopaFvAg==}
 
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
@@ -3662,9 +3672,6 @@ packages:
 
   leaflet-draw@1.0.4:
     resolution: {integrity: sha512-rsQ6saQO5ST5Aj6XRFylr5zvarWgzWnrg46zQ1MEOEIHsppdC/8hnN8qMoFvACsPvTioAuysya/TVtog15tyAQ==}
-
-  leaflet-geometryutil@0.10.3:
-    resolution: {integrity: sha512-Qeas+KsnenE0Km/ydt8km3AqFe7kJhVwuLdbCYM2xe2epsxv5UFEaVJiagvP9fnxS8QvBNbm7DJlDA0tkKo9VA==}
 
   leaflet@1.9.4:
     resolution: {integrity: sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==}
@@ -6942,6 +6949,8 @@ snapshots:
 
   '@fastify/busboy@2.1.0': {}
 
+  '@fortawesome/fontawesome-free@6.7.0': {}
+
   '@humanwhocodes/config-array@0.11.14':
     dependencies:
       '@humanwhocodes/object-schema': 2.0.2
@@ -7802,6 +7811,8 @@ snapshots:
     dependencies:
       '@tufjs/canonical-json': 2.0.0
       minimatch: 9.0.3
+
+  '@types/cordova@11.0.3': {}
 
   '@types/debug@4.1.12':
     dependencies:
@@ -10209,10 +10220,6 @@ snapshots:
       readable-stream: 2.3.8
 
   leaflet-draw@1.0.4: {}
-
-  leaflet-geometryutil@0.10.3:
-    dependencies:
-      leaflet: 1.9.4
 
   leaflet@1.9.4: {}
 

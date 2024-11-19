@@ -1,5 +1,9 @@
 <template>
-  <q-page>
+  <main>
+    <div v-if="loadingState.visible" class="loading-overlay">
+      <div class="spinner"></div>
+      <p>{{ loadingState.message }}</p>
+    </div>
     <div id="map" class="loading"></div>
     <div
       class="vm-info column"
@@ -13,13 +17,9 @@
           :href="'tel:' + selected.Comp_Phone"
           ><span>Report: </span><span>{{ selected.Comp_Phone }}</span></a
         >
-        <q-btn
-          class="vm-close"
-          flat
-          icon="highlight_off"
-          size="lg"
-          @click="onClear"
-        ></q-btn>
+        <button @click="onClear" class="icon-btn">
+          <i class="fas fa-times-circle icon"></i>
+        </button>
       </header>
       <div class="vm-info-content col">
         <!-- Summary Display -->
@@ -41,7 +41,7 @@
         <div class="vm-info-content-data" v-if="detail === 'full'">
           <div class="row justify-start">
             <div class="col-auto vm-phone-label">
-              <div v-if="selected && selected.Comp_Phone">Report:</div>
+              <div v-if="selected && selected.Comp_Phone">Report:&nbsp;</div>
             </div>
             <div class="col-auto">
               <div v-if="selected && selected.Comp_Phone">
@@ -76,27 +76,14 @@
         </div>
       </div>
       <footer class="vm-info-footer col-auto">
-        <q-btn
+        <button
           id="more-info"
           class="pulse"
-          icon="info"
-          text-color="primary"
-          size="md"
           @click="onMore"
-          >{{ detail === "full" ? "Less Information" : "More Information" }}
-          <q-chip
-            v-if="this.detail === 'summary'"
-            color="primary"
-            text-color="white"
-            icon="expand_less"
-          ></q-chip>
-          <q-chip
-            v-if="this.detail === 'full'"
-            color="primary"
-            text-color="white"
-            icon="highlight_off"
-          ></q-chip>
-        </q-btn>
+          ><span>{{ detail === "full" ? "Less Information" : "More Information" }}</span>
+          <i class="fa-solid fa-chevron-up" v-if="detail === 'summary'"></i>
+          <i class="fa-solid fa-chevron-down" v-if="detail === 'full'"></i>
+        </button>
       </footer>
     </div>
     <!-- diagonal stripe bg -->
@@ -124,395 +111,412 @@
         </pattern>
       </defs>
     </svg>
-  </q-page>
+  </main>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref, computed, onMounted, reactive } from "vue";
 import "leaflet/dist/leaflet.js";
 import "leaflet/dist/leaflet.css";
-import 'leaflet-draw';
+import "leaflet-draw";
 import geolocation from "../services/plugins/geolocation";
 import DetachmentCoords from "../data/rcmpDetachmentCoords";
 import Detachments from "../data/detachments";
+import markerIconUrl from "leaflet/dist/images/marker-icon.png";
 
-export default {
-  data: () => ({
-    mapboxAccessToken:
-      "pk.eyJ1Ijoia3lsZWFuZGVyc29uIiwiYSI6ImNrb3lqZXh0ejBtaWsyb3FvN2xqeWljem0ifQ.mOWtsRuMeHlRC-sC6kiuHQ",
-    map: {},
-    detachmentCoords: DetachmentCoords.detachments,
-    detachmentData: Detachments.data,
-    info: L.control(), // infobox with legend
-    geojson: {},
-    detail: "summary",
-    selected: null,
-    marker: {},
-    userLocationMarker: {},
-    popup: {},
-    zoom: 0,
-    tooltips: {},
-    icons: {
-      default: {},
-      building: {},
-    },
-    districtColors: {
-      wad: "#b2d9e8",
-      cad: "#ffcc67",
-      sad: "#fefec8",
-      ead: "#8aca69",
-      other: "transparent",
-    },
-  }),
-  computed: {
-    address1() {
-      if (!this.selected || !this.selected.Address) return "NA";
+// import L from "leaflet";
 
-      return this.selected.Address;
-    },
-    address2() {
-      let detach = this.selected;
-      if (!detach || !(detach.City && detach.Prov && detach.Postal))
-        return "NA";
+declare const cordova: any;
+declare const L: any;
 
-      return `${detach.City}, ${detach.Prov}, ${detach.Postal}`;
-    },
-    mailingAddress1() {
-      if (!this.selected || !this.selected.Mailing_Ad) return "NA";
+const mapboxAccessToken =
+  "pk.eyJ1Ijoia3lsZWFuZGVyc29uIiwiYSI6ImNrb3lqZXh0ejBtaWsyb3FvN2xqeWljem0ifQ.mOWtsRuMeHlRC-sC6kiuHQ";
+let map = null as any;
+const detachmentCoords = DetachmentCoords.detachments as any;
+const detachmentData = Detachments.data || [];
+const info = L.control();
+let geojson = {} as any;
+const detail = ref("summary");
+const selected = ref<any>(null);
+let marker = {} as any;
+let userLocationMarker = {};
+const popup = {};
+let zoom = 0;
+const tooltips = {};
+const icons = {
+  default: {},
+  building: {},
+} as any;
+let _div = null as any;
 
-      // Get index of first comma
-      const comma = this.selected.Mailing_Ad.indexOf(",");
-      return this.selected.Mailing_Ad.substring(0, comma);
-    },
-    mailingAddress2() {
-      if (!this.selected || !this.selected.Mailing_Ad) return "NA";
+const districtColors = {
+  wad: "#b2d9e8",
+  cad: "#ffcc67",
+  sad: "#fefec8",
+  ead: "#8aca69",
+  other: "transparent",
+};
 
-      // Get index of first comma
-      const comma = this.selected.Mailing_Ad.indexOf(",");
-      let subString = this.selected.Mailing_Ad.substring(comma + 1);
-      return subString.trim();
-    },
-  },
-  methods: {
-    getColor(name) {
-      let district = this.detachmentData.find(
-        (x) => x.Detachment.indexOf(name) !== -1
-      ).District;
-      // let district = this.detachmentData.find(function(x, index) {
-      //   return x.Detachment.indexOf(name) !== -1;
-      // }).District;
+const address1 = computed(() => {
+  if (!selected.value || !selected.value.Address) return "NA";
 
-      return district === "WAD"
-        ? this.districtColors.wad
-        : district === "CAD"
-        ? this.districtColors.cad
-        : district === "SAD"
-        ? this.districtColors.sad
-        : district === "EAD"
-        ? this.districtColors.ead
-        : this.districtColors.other;
-    },
-    getStyle(feature) {
-      let bgcolor = this.getColor(feature.properties.name);
-      //fillColor: 'repeating-linear-gradient(135deg, gray 0px, gray 5px, transparent 5px, transparent 10px, gray 10px)',
-      let styles = {
-        fillColor: bgcolor,
-        weight: 2,
-        opacity: 1,
-        color: "white",
-        dashArray: "3",
-        fillOpacity: 0.5,
-      };
-      if (bgcolor === "transparent") {
-        styles.fillColor = "url(#diagonal-stripe)";
-        styles.fillOpacity = 0.2;
+  return selected.value.Address;
+});
+const address2 = computed(() => {
+  let detach = selected.value;
+  if (!detach || !(detach.City && detach.Prov && detach.Postal)) return "NA";
+
+  return `${detach.City}, ${detach.Prov}, ${detach.Postal}`;
+});
+const mailingAddress1 = computed(() => {
+  if (!selected.value || !selected.value.Mailing_Ad) return "NA";
+
+  // Get index of first comma
+  const comma = selected.value.Mailing_Ad.indexOf(",");
+  return selected.value.Mailing_Ad.substring(0, comma);
+});
+const mailingAddress2 = computed(() => {
+  if (!selected.value || !selected.value.Mailing_Ad) return "NA";
+
+  // Get index of first comma
+  const comma = selected.value.Mailing_Ad.indexOf(",");
+  let subString = selected.value.Mailing_Ad.substring(comma + 1);
+  return subString.trim();
+});
+
+const getColor = (name: string) => {
+  let district = detachmentData.find(
+    (x) => x.Detachment.indexOf(name) !== -1
+  )?.District;
+  // let district = this.detachmentData.find(function(x, index) {
+  //   return x.Detachment.indexOf(name) !== -1;
+  // }).District;
+
+  return district === "WAD"
+    ? districtColors.wad
+    : district === "CAD"
+    ? districtColors.cad
+    : district === "SAD"
+    ? districtColors.sad
+    : district === "EAD"
+    ? districtColors.ead
+    : districtColors.other;
+};
+const getStyle = (feature: any) => {
+  let bgcolor = getColor(feature.properties.name);
+  //fillColor: 'repeating-linear-gradient(135deg, gray 0px, gray 5px, transparent 5px, transparent 10px, gray 10px)',
+  let styles = {
+    fillColor: bgcolor,
+    weight: 2,
+    opacity: 1,
+    color: "white",
+    dashArray: "3",
+    fillOpacity: 0.5,
+  };
+  if (bgcolor === "transparent") {
+    styles.fillColor = "url(#diagonal-stripe)";
+    styles.fillOpacity = 0.2;
+  }
+  return styles;
+};
+const highlightFeature = (e: any) => {
+  var layer = e.target;
+
+  layer.setStyle({
+    weight: 4,
+    color: "#666",
+    dashArray: "",
+    fillOpacity: 0.7,
+  });
+
+  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+    layer.bringToFront();
+  }
+};
+const resetHighlight = (e: any) => {
+  geojson.resetStyle(e.target);
+};
+const zoomToFeature = (e: any, location: any) => {
+  var layer = {} as any;
+  if (!location) {
+    layer = e.target;
+    map.fitBounds(e.target.getBounds());
+  } else {
+    layer = location;
+    if (typeof layer.getBounds === "function") {
+      map.fitBounds(layer.getBounds());
+    }
+  }
+  if (!layer || !layer.feature || !layer.feature.properties) {
+    return;
+  }
+  selected.value = detachmentData.find(
+    (x) => x.Detachment.indexOf(layer.feature.properties.name) !== -1
+  );
+  marker.setLatLng([selected.value.Lat, selected.value.Long]);
+
+  const ele = document.getElementById("more-info");
+  if (ele) {
+    if (selected.value.District === "other") {
+      ele.style.visibility = "hidden";
+    } else {
+      ele.style.visibility = "visible";
+    }
+  }
+};
+const onEachFeature = (feature: any, layer: any) => {
+  let area = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]);
+  let area_mapped = map_range(area, 40000000, 51000000000, 1, 10);
+  let labelSize = "" as any;
+  if (area_mapped < 1.2) {
+    labelSize = 1;
+  } else if (area_mapped < 2.5) {
+    labelSize = 2;
+  } else if (area_mapped < 3) {
+    labelSize = 3;
+  } else if (area_mapped < 3.5) {
+    labelSize = 4;
+  } else if (area_mapped < 5.5) {
+    labelSize = 5;
+  } else {
+    labelSize = 6;
+  }
+  let className = "layer-title size-" + labelSize;
+  if (layer.feature.properties.name === "Stettler") {
+    className = "layer-title size-3 stettler";
+  } else if (layer.feature.properties.name === "Pincher Creek") {
+    className = "layer-title size-3 pinchercreek";
+  } else if (layer.feature.properties.name === "Cardston") {
+    className = "layer-title size-3 cardston";
+  } else if (layer.feature.properties.name === "Leduc") {
+    className = "layer-title size-3 leduc";
+  } else if (layer.feature.properties.name === "Slave Lake Municipal") {
+    className = "layer-title size-3 slavelakemunicipal";
+  } else if (layer.feature.properties.name === "Lakeshore Regional") {
+    className = "layer-title size-3 lakeshoreregional";
+  }
+  layer
+    .bindTooltip(layer.feature.properties.name, {
+      className: className,
+      permanent: true,
+      direction: "center",
+    })
+    .addTo(map);
+
+  layer.on({
+    mouseover: highlightFeature,
+    mouseout: resetHighlight,
+    click: zoomToFeature,
+  });
+};
+const onMore = () => {
+  detail.value = detail.value === "summary" ? "full" : "summary";
+};
+const onClear = () => {
+  selected.value = null;
+  localStorage.removeItem("jurisdiction");
+  setTimeout(() => {
+    // Leave enough time for animation to run
+    detail.value = "summary";
+  }, 300);
+};
+const getLayer = (location: string) => {
+  let foundLayer = {};
+  map.eachLayer(function (layer: any) {
+    if (
+      layer &&
+      layer.feature &&
+      layer.feature.properties &&
+      layer.feature.properties.name
+    ) {
+      if (layer.feature.properties.name === location) {
+        foundLayer = layer;
       }
-      return styles;
-    },
-    highlightFeature(e) {
-      var layer = e.target;
-
-      layer.setStyle({
-        weight: 4,
-        color: "#666",
-        dashArray: "",
-        fillOpacity: 0.7,
-      });
-
-      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-      }
-    },
-    resetHighlight(e) {
-      this.geojson.resetStyle(e.target);
-    },
-    zoomToFeature(e, location) {
-      var layer = {};
-      if (!location) {
-        layer = e.target;
-        this.map.fitBounds(e.target.getBounds());
-      } else {
-        layer = location;
-        if (typeof layer.getBounds === "function") {
-          this.map.fitBounds(layer.getBounds());
-        }
-      }
-      if (!layer || !layer.feature || !layer.feature.properties) {
-        return;
-      }
-      this.selected = this.detachmentData.find(
-        (x) => x.Detachment.indexOf(layer.feature.properties.name) !== -1
-      );
-      this.marker.setLatLng([this.selected.Lat, this.selected.Long]);
-      if (this.selected.District === "other") {
-        document.getElementById("more-info").style.visibility = "hidden";
-      } else {
-        document.getElementById("more-info").style.visibility = "visible";
-      }
-    },
-    onEachFeature(feature, layer) {
-      console.log("----------", L);
-      let area = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]);
-      let area_mapped = this.map_range(area, 40000000, 51000000000, 1, 10);
-      let labelSize = "";
-      if (area_mapped < 1.2) {
-        labelSize = 1;
-      } else if (area_mapped < 2.5) {
-        labelSize = 2;
-      } else if (area_mapped < 3) {
-        labelSize = 3;
-      } else if (area_mapped < 3.5) {
-        labelSize = 4;
-      } else if (area_mapped < 5.5) {
-        labelSize = 5;
-      } else {
-        labelSize = 6;
-      }
-      let className = "layer-title size-" + labelSize;
-      if (layer.feature.properties.name === "Stettler") {
-        className = "layer-title size-3 stettler";
-      } else if (layer.feature.properties.name === "Pincher Creek") {
-        className = "layer-title size-3 pinchercreek";
-      } else if (layer.feature.properties.name === "Cardston") {
-        className = "layer-title size-3 cardston";
-      } else if (layer.feature.properties.name === "Leduc") {
-        className = "layer-title size-3 leduc";
-      } else if (layer.feature.properties.name === "Slave Lake Municipal") {
-        className = "layer-title size-3 slavelakemunicipal";
-      } else if (layer.feature.properties.name === "Lakeshore Regional") {
-        className = "layer-title size-3 lakeshoreregional";
-      }
-      layer
-        .bindTooltip(layer.feature.properties.name, {
-          className: className,
-          permanent: true,
-          direction: "center",
-        })
-        .addTo(this.map);
-
-      layer.on({
-        mouseover: this.highlightFeature,
-        mouseout: this.resetHighlight,
-        click: this.zoomToFeature,
-      });
-    },
-    onMore() {
-      this.detail = this.detail === "summary" ? "full" : "summary";
-    },
-    onClear() {
-      this.selected = null;
-      localStorage.removeItem("jurisdiction");
-      setTimeout(() => {
-        // Leave enough time for animation to run
-        this.detail = "summary";
-      }, 300);
-    },
-    getLayer(location) {
-      let foundLayer = {};
-      this.map.eachLayer(function (layer) {
-        if (
-          layer &&
-          layer.feature &&
-          layer.feature.properties &&
-          layer.feature.properties.name
-        ) {
-          if (layer.feature.properties.name === location) {
-            foundLayer = layer;
-          }
-        }
-      });
-      return foundLayer;
-    },
-    map_range(value, low1, high1, low2, high2) {
-      return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1);
-    },
-    add() {
-      this._div = L.DomUtil.create("div", "info");
-      this._div.innerHTML = `<h4>"K" Division RCMP</h4>
+    }
+  });
+  return foundLayer;
+};
+const map_range = (
+  value: number,
+  low1: number,
+  high1: number,
+  low2: number,
+  high2: number
+) => {
+  return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1);
+};
+const add = () => {
+  _div = L.DomUtil.create("div", "info");
+  _div.innerHTML = `<h4>"K" Division RCMP</h4>
           <div id="rcmp-crest"></div>
           <div id="legend">
-            <div id="wad" style="background-color: ${this.districtColors.wad}"></div><span>WAD</span>
-            <div id="cad" style="background-color: ${this.districtColors.cad}"></div><span>CAD</span>
-            <div id="sad" style="background-color: ${this.districtColors.sad}"></div><span>SAD</span>
-            <div id="ead" style="background-color: ${this.districtColors.ead}"></div><span>EAD</span>
+            <div id="wad" style="background-color: ${districtColors.wad}"></div><span>WAD</span>
+            <div id="cad" style="background-color: ${districtColors.cad}"></div><span>CAD</span>
+            <div id="sad" style="background-color: ${districtColors.sad}"></div><span>SAD</span>
+            <div id="ead" style="background-color: ${districtColors.ead}"></div><span>EAD</span>
             <div id="other" class="other-district"></div><span>Other</span>
           </div>
           `;
-      // this.update();
-      return this._div;
-    },
-  },
-  mounted() {
-    this.info.onAdd = this.add;
-
-    this.info.update = function (props) {
-      this._div.innerHTML = "";
-    };
-
-    this.map = L.map("map").setView([55, -113], 6);
-    L.tileLayer(
-      "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" +
-        this.mapboxAccessToken,
-      {
-        id: "mapbox/streets-v11",
-        attribution: "",
-        tileSize: 512,
-        zoomOffset: -1,
-        maxZoom: 12,
-        minZoom: 5,
-      }
-    ).addTo(this.map);
-
-    this.map.on("zoomend", () => {
-      this.zoom = this.map.getZoom();
-      if (this.zoom < 7) {
-        this.marker.setLatLng([1, -1]);
-      }
-      // set zoom body class
-      let bodyClasses = document.body.classList;
-      for (var i = 0; i < bodyClasses.length; i++) {
-        if (bodyClasses[i].indexOf("zoom") != -1) {
-          document.body.classList.remove(bodyClasses[i]);
-        }
-      }
-      document.body.classList.add("zoom" + this.zoom);
-    });
-
-    this.info.addTo(this.map);
-
-    this.geojson = L.geoJson(this.detachmentCoords, {
-      style: this.getStyle,
-      onEachFeature: this.onEachFeature,
-    }).addTo(this.map);
-
-    this.icons.default = new L.icon({
-      iconUrl: require("../../node_modules/leaflet/dist/images/marker-icon.png"),
-      iconSize: [25, 41],
-      iconAnchor: [2, 2],
-      popupAnchor: [0, -2],
-    });
-
-    this.icons.building = L.divIcon({
-      className: "location-icon",
-      html: "<div style='background-color:#4838cc;' class='marker-pin'></div><i class='fa fa-building awesome'>",
-      iconSize: [30, 42],
-      iconAnchor: [15, 42],
-    });
-
-    // Retrieve users location
-    if (navigator.geolocation) {
-      this.$q.loading.show({ message: "Retrieving your location" });
-      setTimeout(() => {
-        if (typeof cordova !== "undefined") {
-          geolocation
-            .getLocation()
-            .then(async (result) => {
-              // Find nearest detachment
-              this.$q.loading.show({ message: "Finding nearest detachment" });
-              const nearest = await Detachments.findNearest({
-                lat: result.latitude,
-                long: result.longitude,
-              });
-              if (nearest != null) {
-                this.selected = nearest;
-                let currentLocation = this.getLayer(this.selected.Detachment);
-                this.zoomToFeature(false, currentLocation);
-                this.userLocationMarker = L.marker(
-                  [result.latitude, result.longitude],
-                  {
-                    icon: this.icons.default,
-                  }
-                ).addTo(this.map);
-              } else {
-                this.selected = null;
-              }
-
-              this.$q.loading.hide();
-            })
-            .catch((error) => {
-              console.error("The Promise is rejected!", error);
-            });
-        } else {
-          navigator.geolocation.getCurrentPosition(
-            async (position) => {
-              this.$q.loading.hide();
-              // Find nearest detachment
-              this.$q.loading.show({ message: "Finding nearest detachment" });
-              const nearest = await Detachments.findNearest({
-                lat: position.coords.latitude,
-                long: position.coords.longitude,
-              });
-              if (nearest != null) {
-                this.selected = nearest;
-                let currentLocation = this.getLayer(this.selected.Detachment);
-                this.zoomToFeature(false, currentLocation);
-                this.userLocationMarker = L.marker(
-                  [position.coords.latitude, position.coords.longitude],
-                  { icon: this.icons.default }
-                ).addTo(this.map);
-              } else {
-                this.selected = null;
-              }
-
-              this.$q.loading.hide();
-            },
-            (error) => {
-              this.$q.loading.hide();
-              this.$q.notify({
-                message: `We were unable to retrieve your location. If you didn't allow the app access to your location previously, please remove the restriction in your devices web browser settings.`,
-                type: "info",
-                icon: "warning",
-                position: "top",
-                timeout: 10000,
-              });
-
-              console.log("Location error: ", error);
-            },
-            {
-              enableHighAccuracy: false,
-              timeout: 30000,
-            }
-          );
-        }
-      }, 5000);
-    }
-
-    // prevent scrolling away from Alberta
-    let bounds = this.map.getBounds();
-    let paddedBounds = bounds;
-    paddedBounds._southWest.lat = 48;
-    paddedBounds._northEast.lat = 62;
-    this.map.setMaxBounds(paddedBounds);
-
-    this.marker = L.marker([1, -1], { icon: this.icons.building }).addTo(
-      this.map
-    );
-    //this.popup = L.popup({className: 'location-popup'});
-    // this.marker.bindPopup(this.popup);
-    // this.marker.on('click', function(e, i){
-    //   this.openPopup('');
-    // });
-  },
+  // this.update();
+  return _div;
 };
+
+const loadingState = reactive({
+  visible: false,
+  message: "Loading...",
+});
+
+const hideLoading = () => {
+  loadingState.visible = false;
+};
+
+const showLoading = (message: string = "Loading...") => {
+  loadingState.visible = true;
+  loadingState.message = message;
+};
+
+onMounted(() => {
+  info.onAdd = add;
+
+  info.update = function (props: any) {
+    this._div.innerHTML = "";
+  };
+
+  map = L.map("map").setView([55, -113], 6);
+  L.tileLayer(
+    "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" +
+      mapboxAccessToken,
+    {
+      id: "mapbox/streets-v11",
+      attribution: "",
+      tileSize: 512,
+      zoomOffset: -1,
+      maxZoom: 12,
+      minZoom: 5,
+    }
+  ).addTo(map);
+
+  map.on("zoomend", () => {
+    zoom = map.getZoom();
+    if (zoom < 7) {
+      marker.setLatLng([1, -1]);
+    }
+    // set zoom body class
+    let bodyClasses = document.body.classList;
+    for (var i = 0; i < bodyClasses.length; i++) {
+      if (bodyClasses[i].indexOf("zoom") != -1) {
+        document.body.classList.remove(bodyClasses[i]);
+      }
+    }
+    document.body.classList.add("zoom" + zoom);
+  });
+
+  info.addTo(map);
+
+  geojson = L.geoJson(detachmentCoords, {
+    style: getStyle,
+    onEachFeature: onEachFeature,
+  }).addTo(map);
+
+  icons.default = L.icon({
+    iconUrl: markerIconUrl,
+    iconSize: [25, 41],
+    iconAnchor: [2, 2],
+    popupAnchor: [0, -2],
+  });
+
+  icons.building = L.divIcon({
+    className: "location-icon",
+    html: "<div style='background-color:#4838cc;' class='marker-pin'></div><i class='fa fa-building awesome'>",
+    iconSize: [30, 42],
+    iconAnchor: [15, 42],
+  });
+
+  // Retrieve users location
+  if (navigator.geolocation) {
+    showLoading("Retrieving your location");
+    setTimeout(() => {
+      if (typeof cordova !== "undefined") {
+        geolocation
+          .getLocation()
+          .then(async (result) => {
+            hideLoading();
+            showLoading("Finding nearest detachment");
+            const nearest = await Detachments.findNearest({
+              lat: result.latitude,
+              long: result.longitude,
+            });
+            if (nearest != null) {
+              selected.value = nearest;
+              let currentLocation = getLayer(selected.value.Detachment);
+              zoomToFeature(false, currentLocation);
+              userLocationMarker = L.marker(
+                [result.latitude, result.longitude],
+                {
+                  icon: icons.default,
+                }
+              ).addTo(map);
+            } else {
+              selected.value = null;
+            }
+            hideLoading();
+          })
+          .catch((error) => {
+            console.error("The Promise is rejected!", error);
+          });
+      } else {
+        navigator.geolocation.getCurrentPosition(
+          async (position) => {
+            hideLoading();
+            showLoading("Finding nearest detachment");
+            const nearest = await Detachments.findNearest({
+              lat: position.coords.latitude,
+              long: position.coords.longitude,
+            });
+            if (nearest != null) {
+              selected.value = nearest;
+              let currentLocation = getLayer(selected.value.Detachment);
+              zoomToFeature(false, currentLocation);
+              userLocationMarker = L.marker(
+                [position.coords.latitude, position.coords.longitude],
+                { icon: icons.default }
+              ).addTo(map);
+            } else {
+              selected.value = null;
+            }
+            hideLoading();
+            // this.$q.loading.hide();
+          },
+          (error) => {
+            hideLoading();
+            alert(
+              `We were unable to retrieve your location. If you didn't allow the app access to your location previously, please remove the restriction in your devices web browser settings.`
+            );
+            console.log("Location error: ", error);
+          },
+          {
+            enableHighAccuracy: false,
+            timeout: 30000,
+          }
+        );
+      }
+    }, 5000);
+  }
+
+  // prevent scrolling away from Alberta
+  let bounds = map.getBounds();
+  let paddedBounds = bounds;
+  paddedBounds._southWest.lat = 48;
+  paddedBounds._northEast.lat = 62;
+  map.setMaxBounds(paddedBounds);
+
+  marker = L.marker([1, -1], { icon: icons.building }).addTo(map);
+  //this.popup = L.popup({className: 'location-popup'});
+  // this.marker.bindPopup(this.popup);
+  // this.marker.on('click', function(e, i){
+  //   this.openPopup('');
+  // });
+});
 </script>
 
 <style lang="scss">
@@ -601,7 +605,7 @@ body.ios .q-hoverable:active .q-focus-helper {
     background-color: #fff;
     padding: 6px 8px;
     border-radius: 12px;
-    color: var(--q-color-primary);
+    color: #17314b;
 
     @media (min-width: 1024px) {
       font-size: larger;
@@ -609,12 +613,12 @@ body.ios .q-hoverable:active .q-focus-helper {
     }
 
     a {
-      color: var(--q-color-primary);
+      color: #17314b;
       font-weight: bold;
     }
 
     &:hover {
-      background-color: var(--q-color-secondary);
+      background-color: #ffcb02;
     }
   }
 
@@ -656,7 +660,7 @@ body.ios .q-hoverable:active .q-focus-helper {
 }
 
 .vm-info-footer {
-  background-color: var(--q-color-primary);
+  background-color: #17314b;
   color: #fff;
 
   .q-chip,
@@ -668,7 +672,7 @@ body.ios .q-hoverable:active .q-focus-helper {
     border-radius: 80%;
     margin-right: 0.6rem;
     animation: pulse 1.2s infinite;
-    background: var(--q-color-primary) !important;
+    background: #17314b !important;
   }
 
   span {
@@ -1035,5 +1039,67 @@ body {
     transform: scale(0.98);
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+  p {
+    color: white;
+  } 
+}
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top: 5px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+// p {
+//   margin-top: 10px;
+//   color: white;
+//   font-size: 18px;
+// }
+
+.row {
+  display: flex;
+}
+
+.icon-btn {
+  font-size: 30px;
+}
+
+.pulse {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.pulse span {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.pulse i {
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+a {
+  color: #877200;
 }
 </style>

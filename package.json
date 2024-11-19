@@ -32,6 +32,7 @@
     "xml2js": "^0.6.2"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.0",
     "geo-helpers": "^1.2.6",
     "leaflet": "^1.9.4",
     "leaflet-draw": "^1.0.4"
