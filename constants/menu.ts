@@ -16,25 +16,25 @@ export const menu: Menu[] = [
     _path: '/updates',
   },
   {
-    title: 'Online Crime Reporting',
-    metatitle: 'Online Crime Reporting',
-    icon: '',
-    target: '_blank',
-    _path: 'https://ocre-sielc.rcmp-grc.gc.ca/alberta',
-  },
-  {
-    title: 'RCMP Boundary Map',
-    metatitle: 'RCMP Boundary Map',
-    icon: '',
-    target: '_self',
-    _path: '/boundary-map',
-  },
-  {
     title: 'RCMP Crime Map',
     metatitle: 'RCMP Crime Map',
     icon: 'ph:map-trifold-duotone',
     target: '_self',
     _path: '/map',
+  },
+  {
+    title: 'RCMP Boundary Map',
+    metatitle: 'RCMP Boundary Map',
+    icon: 'ph:map-trifold-duotone',
+    target: '_self',
+    _path: '/boundary-map',
+  },
+  {
+    title: 'Online Crime Reporting',
+    metatitle: 'Online Crime Reporting',
+    icon: 'ph:cursor-click-duotone',
+    target: '_blank',
+    _path: 'https://ocre-sielc.rcmp-grc.gc.ca/alberta',
   },
 ]
 
