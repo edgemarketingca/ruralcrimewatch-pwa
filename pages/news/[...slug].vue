@@ -14,12 +14,8 @@ function getFile(file: string) {
 
 <template>
   <div class="text-black dark:text-white content-page">
-    <div v-for="content, index of article?.areas.data" :key="index">
-      <div class="mt-4" v-for="block of content.blocks.data" :key="block.id">
-        <div v-html="block.value.content" />
-        <img v-if="block.value.fID" class="dark:bg-white rounded-lg" :src="getFile(block.value.fID)?.url" />
-      </div>
-    </div>
+    <h1 v-html="article.name" />
+    <div v-html="article.htmlContent" />
     <!-- add alert -->
   </div>
 </template>
