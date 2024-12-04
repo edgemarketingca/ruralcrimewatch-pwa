@@ -100,7 +100,7 @@ padding: 55px 0 0 0; }
 
 
 
-@media screen and (max-width:1000px){
+@media screen and (min-width:1000px){
  .content-page     .p-extreme {
     font-size: 6.5rem;
     line-height: 1;
@@ -138,6 +138,7 @@ padding: 55px 0 0 0; }
         border: 0;
         overflow: hidden;
         width: max-content;
+        max-width: 100%;
     }    
       .ccm-layout-column {
         float: none !important;
