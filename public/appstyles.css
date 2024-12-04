@@ -116,7 +116,7 @@ nav.fixed.z-50 { z-index:9999; }
 .content-page strong,
 .content-page p strong,
 .content-page li strong {
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 .content-page .ccm-layout-column { 
 border-radius: 15px;
