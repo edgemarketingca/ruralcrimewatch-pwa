@@ -13,6 +13,45 @@ nav.fixed.z-50 { z-index:9999; }
 .content-page h5,
 .content-page h6 { margin: 0;line-height:1;font-weight: 600; }
 
+
+.content-page h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem
+}
+
+.content-page h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem
+}
+
+.content-page h3 {
+    font-size: 1.75rem
+}
+
+.content-page h3,.content-page h4 {
+    font-weight: 500;
+    margin-bottom: 1rem
+}
+
+.content-page h4 {
+    font-size: 1.5rem
+}
+
+.content-page h5 {
+    font-size: 1.25rem
+}
+
+.content-page h5,.content-page h6 {
+    font-weight: 500;
+    margin-bottom: 1rem
+}
+
+.content-page h6 {
+    font-size: 1rem
+}
+
 .content-page h5 a,
 .content-page a h5,
 .content-page a.button {
@@ -138,15 +177,15 @@ padding: 55px 0 0 0; }
         width: max-content;
         max-width: 100%;
     }    
-      .ccm-layout-column {
+      .content-page .ccm-layout-column {
         float: none !important;
-        width: 98% !important;
+        width: 98% ;
       }
-      .ccm-layout-column-inner {
+     .content-page  .ccm-layout-column-inner {
         margin: 55px 0 !important;
       }
     }
-    .ccm-layout-column-inner {
+   .content-page  .ccm-layout-column-inner {
       margin-top: 25px !important;
       margin-bottom: 25px !important;
     }
