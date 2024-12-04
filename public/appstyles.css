@@ -16,7 +16,6 @@ nav.fixed.z-50 { z-index:9999; }
 .content-page h5 a,
 .content-page a h5,
 .content-page a.button {
-  font-family: 'BarlowCondensed', sans-serif;
   font-weight: 600;
   padding: 20px 25px;
   text-transform: uppercase;
@@ -49,6 +48,28 @@ nav.fixed.z-50 { z-index:9999; }
   color: #000 !important;
 }
 
+.content-page a.button:hover,
+.content-page a.button.outlined:hover,
+.content-page h5 a:hover,
+.content-page a:hover h5 {
+  background: #3e3e3e !important;
+  border: 1px #3e3e3e solid;
+  color: #fff !important;
+}
+.content-page a.btnblack:hover {
+  background: #3e3e3e !important;
+  color: #fff !important;
+  border: 1px #3e3e3e solid;
+}
+.content-page a.button.solid:hover {
+  background: #3e3e3e !important;
+  border: 1px #3e3e3e solid !important;
+  color: #fff !important;
+}
+
+.dark .content-page a.button.outlined { color: #fff !important; }
+.dark .content-page a.button.outlined:hover { color: #fff !important; }
+
 .content-page .cntpad li {
   padding: 5px 0;
   line-height: 24px;
@@ -58,8 +79,7 @@ nav.fixed.z-50 { z-index:9999; }
 .content-page li strong {
   font-weight: 600;
 }
-.content-page .ccm-layout-column {
-padding: 2%;
+.content-page .ccm-layout-column { 
 border-radius: 15px;
 box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
 }
@@ -77,11 +97,139 @@ padding: 55px 0 0 0; }
 .light .content-page hr { border-bottom: 1px dotted #bbb; }
 .dark .content-page hr { border-bottom: 1px dotted #333; }
 
-.content-page .ccm-layout { display: flex; }
 
 
+
+@media screen and (min-width:300px){
+ .content-page     .p-extreme {
+    font-size: 6.5rem;
+    line-height: 1;
+  }
+.content-page   .p-xlarge {
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+.content-page   .p-large {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+.content-page   .p-small {
+    font-size: 1em;
+    line-height: 1;
+  }
+ .content-page  .p-allcaps {
+    text-transform: uppercase;
+  }
+.content-page .ccm-layout-column {padding: 10%; }
+.content-page .ccm-layout {    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; }
+    
+    .content-page .padditbx .image-full,
+    .content-page .padditbx .image-right,
+    .content-page .padditbx .image-left { 
+      float: none; 
+      display: block; 
+      border-radius: 15px;  
+      background: #fff; 
+      margin: 45px auto;
+      clear: both;
+        border: 0;
+        overflow: hidden;
+        width: max-content;
+    }    
+      .ccm-layout-column {
+        float: none !important;
+        width: 100% !important;
+      }
+      .ccm-layout-column-inner {
+        margin: 55px 0 !important;
+      }
+    }
+    .ccm-layout-column-inner {
+      margin-top: 25px !important;
+      margin-bottom: 25px !important;
+    }
+    .vertical .ccm-layout-column {
+      float: none !important;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .vbottom .ccm-layout-column {
+      float: none !important;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+    div.arealayout.vertical .ccm-layout-column {
+      float: none !important;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    /*** grid layout presets ***/
+      .one-third,
+      .two-third,
+      .thirds,
+      .full-width,
+      .half-half,
+      .quarters,
+      .one-quarter,
+      .three-quarter {
+        display: block;
+        width: 98%;
+        margin: 1%; 
+        vertical-align: top;
+        min-height: 1px;
+        position: relative;
+      }
+      .one-third a.button,
+      .two-third a.button,
+      .thirds a.button,
+      .full-width a.button,
+      .half-half a.button,
+      .quarters a.button,
+      .one-quarter a.button,
+      .three-quarter a.button {
+        display: block;
+        margin-top: 3px;
+        margin-bottom: 3px;
+      }
+}
 @media screen and (min-width: 1000px){
-
+ 
+.content-page   .p-extreme {
+    font-size: 9.5rem;
+    line-height: 1;
+  }
+.content-page   .p-xlarge {
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+.content-page   .p-large {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+.content-page   .p-small {
+    font-size: 1em;
+    line-height: 1;
+  }
+.content-page   .p-allcaps {
+    text-transform: uppercase;
+  }
+  .content-page .p-chtrlarge {
+    font-size: 2.75rem;
+    line-height: 1;
+  }
+  .content-page .p-chtrxlarge {
+    font-size: 6.75rem;
+    line-height: 1;
+  }
+    .content-page .ccm-layout-column {padding: 2%; }
+.content-page .ccm-layout {    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; }
+    
     .content-page .padditbx .image-left { float: left; margin: 0 50px 50px 0; }
     .content-page .padditbx .image-right { float: right;margin: 0 0 50px 50px; }
     .content-page .padditbx .image-full { float: none; margin: 50px; }
@@ -215,73 +363,4 @@ padding: 55px 0 0 0; }
     margin-right: 4%;
   }*/
   
-}
-@media screen and (min-width:300px) and (max-width:1000px){
-
-    .content-page .padditbx .image-full,
-    .content-page .padditbx .image-right,
-    .content-page .padditbx .image-left { 
-      float: none; 
-      display: block; 
-      border-radius: 15px;  
-      background: #fff;
-      border: 1px #efefef solid;
-      margin: 0 auto 45px auto;
-      clear: both;
-    }    
-      .ccm-layout-column {
-        float: none !important;
-        width: 100% !important;
-      }
-      .ccm-layout-column-inner {
-        margin: 55px 0 !important;
-      }
-    }
-    .ccm-layout-column-inner {
-      margin-top: 25px !important;
-      margin-bottom: 25px !important;
-    }
-    .vertical .ccm-layout-column {
-      float: none !important;
-      display: inline-block;
-      vertical-align: middle;
-    }
-    .vbottom .ccm-layout-column {
-      float: none !important;
-      display: inline-block;
-      vertical-align: bottom;
-    }
-    div.arealayout.vertical .ccm-layout-column {
-      float: none !important;
-      display: inline-block;
-      vertical-align: middle;
-    }
-    /*** grid layout presets ***/
-      .one-third,
-      .two-third,
-      .thirds,
-      .full-width,
-      .half-half,
-      .quarters,
-      .one-quarter,
-      .three-quarter {
-        display: inline-block;
-        width: 98%;
-        margin: 1%; 
-        vertical-align: top;
-        min-height: 1px;
-        position: relative;
-      }
-      .one-third a.button,
-      .two-third a.button,
-      .thirds a.button,
-      .full-width a.button,
-      .half-half a.button,
-      .quarters a.button,
-      .one-quarter a.button,
-      .three-quarter a.button {
-        display: block;
-        margin-top: 3px;
-        margin-bottom: 3px;
-      }
 }
