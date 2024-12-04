@@ -100,7 +100,7 @@ padding: 55px 0 0 0; }
 
 
 
-@media screen and (min-width:1000px){
+@media (min-width:250px){
  .content-page     .p-extreme {
     font-size: 6.5rem;
     line-height: 1;
@@ -196,7 +196,7 @@ padding: 55px 0 0 0; }
         margin-bottom: 3px;
       }
 }
-@media screen and (min-width: 1000px){
+@media (min-width: 1000px){
  
 .content-page   .p-extreme {
     font-size: 9.5rem;
