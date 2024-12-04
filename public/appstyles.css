@@ -228,9 +228,7 @@ padding: 55px 0 0 0; }
       .quarters a.button,
       .one-quarter a.button,
       .three-quarter a.button {
-        display: block;
-        margin-top: 3px;
-        margin-bottom: 3px;
+        display: block; 
       }
 /*} */
 @media (min-width: 1000px) {
@@ -346,8 +344,6 @@ padding: 55px 0 0 0; }
   .half-half a.button,
   .quarters a.button {
     display: inline-block;
-    margin-top: 3px;
-    margin-bottom: 3px;
   }
   .onethird-layout .two-third {
     width: 62.6666%;
