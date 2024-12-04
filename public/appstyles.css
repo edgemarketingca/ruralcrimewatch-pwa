@@ -345,7 +345,7 @@ padding: 55px 0 0 0; }
   .full-width a.button,
   .half-half a.button,
   .quarters a.button {
-    display: inherit;
+    display: inline-block;
     margin-top: 3px;
     margin-bottom: 3px;
   }
