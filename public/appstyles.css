@@ -1,1 +1,287 @@
 nav.fixed.z-50 { z-index:9999; }
+
+.content-page > h1 { } 
+.content-page p {
+    margin: 0;
+    padding: 10px 0;
+    line-height: 1.5em;
+}
+.content-page h1,
+.content-page h2,
+.content-page h3,
+.content-page h4,
+.content-page h5,
+.content-page h6 { margin: 0;line-height:1;font-weight: 600; }
+
+.content-page h5 a,
+.content-page a h5,
+.content-page a.button {
+  font-family: 'BarlowCondensed', sans-serif;
+  font-weight: 600;
+  padding: 20px 25px;
+  text-transform: uppercase;
+  min-width: 125px;
+  margin: 5px auto;
+  display: inline-block;
+  vertical-align: middle;
+  text-shadow: none;
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none !important;
+  background: #ffca05;
+  border: 1px #ffca05 solid;
+  color: #000 !important;
+  font-size: 1.125rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.content-page a.button.outlined {
+  background: none;
+  border: 1px #ffca05 solid;
+  color: #000 !important;
+}
+.content-page a.button.solid {
+  background: #ffca05;
+  border: 1px #ffca05 solid;
+  color: #000 !important;
+}
+
+.content-page .cntpad li {
+  padding: 5px 0;
+  line-height: 24px;
+}
+.content-page strong,
+.content-page p strong,
+.content-page li strong {
+  font-weight: 600;
+}
+.content-page .ccm-layout-column {
+padding: 2%;
+border-radius: 15px;
+box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+}
+.light .content-page .ccm-layout-column { border: 1px solid #bbb; background: #f6f6f6; }
+.dark  .content-page .ccm-layout-column { border: 1px solid #000; background: #333; }
+
+.content-page hr {
+position: relative;
+clear: both;
+border: 0;
+overflow: visible;
+max-width: 60%;
+margin: 0 auto 55px auto;
+padding: 55px 0 0 0; }
+.light .content-page hr { border-bottom: 1px dotted #bbb; }
+.dark .content-page hr { border-bottom: 1px dotted #333; }
+
+.content-page .ccm-layout { display: flex; }
+
+
+@media screen and (min-width: 1000px){
+
+    .content-page .padditbx .image-left { float: left; margin: 0 50px 50px 0; }
+    .content-page .padditbx .image-right { float: right;margin: 0 0 50px 50px; }
+    .content-page .padditbx .image-full { float: none; margin: 50px; }
+    .content-page .fifty,
+    .content-page .sixty,
+    .content-page .eighty {
+      margin: 0 auto;
+    }
+    .content-page .fifty {
+      width: 50%;
+    }
+   .content-page  .sixty {
+      width: 60%;
+    }
+    .content-page .eighty {
+      width: 80%;
+    }
+
+    /*** grid layout presets ***/
+  .one-third,
+  .two-third,
+  .thirds,
+  .full-width,
+  .half-half,
+  .one-quarter,
+  .three-quarter {
+    min-height: 10px;
+    display: inline-block;
+  }
+  .one-third,
+  .thirds {
+    width: 31.3333%;
+  }
+  .two-third {
+    width: 64.6666%;
+  }
+  .half-half {
+    width: 48%;
+  }
+  .quaters {
+    width: 23%;
+  }
+  .full-width {
+    width: 98%;
+    display: block;
+    clear: both;
+  }
+  .threequarter-layout .one-quarter {
+    width: 25%;
+  }
+  .threequarter-layout .three-quarter {
+    width: 71%;
+    margin-right: 4%;
+  }
+  .onequarter-layout .one-quarter {
+    width: 25%;
+    margin-right: 4%;
+  }
+  .onequarter-layout .three-quarter {
+    width: 71%;
+  }
+  .vertical .one-third,
+  .vertical .two-third,
+  .vertical .thirds,
+  .vertical .one-quarter,
+  .vertical .three-quarter,
+  .vertical .full-width,
+  .vertical .half-half {
+    vertical-align: middle;
+  }
+  .one-third a.button,
+  .two-third a.button,
+  .thirds a.button,
+  .one-quarter a.button,
+  .three-quarter a.button,
+  .full-width a.button,
+  .half-half a.button,
+  .quarters a.button {
+    display: inherit;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  .onethird-layout .two-third {
+    width: 62.6666%;
+    margin-left: 4%;
+  }
+  .twothird-layout .two-third {
+    width: 62.6666%;
+    margin-right: 4%;
+  }
+  .thirds-layout {
+    display: flex;
+    text-align: inherit;
+    align-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .quarters-layout {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .thirds-layout .thirds {
+    width: auto;
+    text-align: inherit;
+    margin: 15px 0%;
+    flex: 3;
+    display: inline;
+  }
+  .quarters-layout .quarters {
+    flex: 1;
+    width: 25%;
+  }
+  .thirds-layout .thirds:nth-child(2) {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .quarters-layout .quarters:nth-child(even) {
+    margin-left: inherit;
+  }
+  .quarters-layout .quarters:nth-child(2) {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
+  .quarters-layout .quarters:nth-child(3) {
+    margin-right: 2.5%;
+  }
+  .halfhalf-layout .half-half {
+    width: 48%;
+  }
+/*  .halfhalf-layout .half-half:first-child {
+    margin-right: 4%;
+  }*/
+  
+}
+@media screen and (min-width:300px) and (max-width:1000px){
+
+    .content-page .padditbx .image-full,
+    .content-page .padditbx .image-right,
+    .content-page .padditbx .image-left { 
+      float: none; 
+      display: block; 
+      border-radius: 15px;  
+      background: #fff;
+      border: 1px #efefef solid;
+      margin: 0 auto 45px auto;
+      clear: both;
+    }    
+      .ccm-layout-column {
+        float: none !important;
+        width: 100% !important;
+      }
+      .ccm-layout-column-inner {
+        margin: 55px 0 !important;
+      }
+    }
+    .ccm-layout-column-inner {
+      margin-top: 25px !important;
+      margin-bottom: 25px !important;
+    }
+    .vertical .ccm-layout-column {
+      float: none !important;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .vbottom .ccm-layout-column {
+      float: none !important;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+    div.arealayout.vertical .ccm-layout-column {
+      float: none !important;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    /*** grid layout presets ***/
+      .one-third,
+      .two-third,
+      .thirds,
+      .full-width,
+      .half-half,
+      .quarters,
+      .one-quarter,
+      .three-quarter {
+        display: inline-block;
+        width: 98%;
+        margin: 1%; 
+        vertical-align: top;
+        min-height: 1px;
+        position: relative;
+      }
+      .one-third a.button,
+      .two-third a.button,
+      .thirds a.button,
+      .full-width a.button,
+      .half-half a.button,
+      .quarters a.button,
+      .one-quarter a.button,
+      .three-quarter a.button {
+        display: block;
+        margin-top: 3px;
+        margin-bottom: 3px;
+      }
+}
