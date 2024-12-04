@@ -98,9 +98,7 @@ padding: 55px 0 0 0; }
 .dark .content-page hr { border-bottom: 1px dotted #333; }
 
 
-
-
-@media (max-width: 1000px) and (display-mode: standalone) {
+@media (min-width: 200px) {
  .content-page     .p-extreme {
     font-size: 6.5rem;
     line-height: 1;
@@ -196,7 +194,7 @@ padding: 55px 0 0 0; }
         margin-bottom: 3px;
       }
 }
-@media (min-width: 1000px) and (display-mode: standalone) { 
+@media (min-width: 1000px) {
 .content-page   .p-extreme {
     font-size: 9.5rem;
     line-height: 1;
