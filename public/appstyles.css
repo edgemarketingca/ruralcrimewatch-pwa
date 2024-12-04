@@ -100,7 +100,7 @@ padding: 55px 0 0 0; }
 
 
 
-@media (min-width:250px){
+@media (max-width: 1000px) and (display-mode: standalone) {
  .content-page     .p-extreme {
     font-size: 6.5rem;
     line-height: 1;
@@ -196,8 +196,7 @@ padding: 55px 0 0 0; }
         margin-bottom: 3px;
       }
 }
-@media (min-width: 1000px){
- 
+@media (min-width: 1000px) and (display-mode: standalone) { 
 .content-page   .p-extreme {
     font-size: 9.5rem;
     line-height: 1;
