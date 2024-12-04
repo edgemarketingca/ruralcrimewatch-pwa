@@ -113,6 +113,7 @@ nav.fixed.z-50 { z-index:9999; }
   padding: 5px 0;
   line-height: 24px;
 }
+.content-page b,
 .content-page strong,
 .content-page p strong,
 .content-page li strong {
