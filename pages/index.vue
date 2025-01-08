@@ -18,6 +18,13 @@ function getThumbnail(item: {} | undefined) {
 
 <template>
   <main class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 place-items-center items-stretch text-white pb-10">
+
+    <div class="top-4 flex justify-between items-center bg-primary p-2 rounded-lg mb-6">
+      <NuxtLink title="Report Suspicous Activity" class="p-2" to="tel:1-833-547-7283">
+         <span class="font-bold text-xl text-black">Call to report suspicious activity in Alberta :: 1-833-547-RAVE</span>
+      </NuxtLink>
+    </div>
+    
     <Carousel :autoplay="8000" :wrapAround="true" :pauseAutoplayOnHover="true" class="lg:col-span-3 col-span-3 w-full">
       <Slide v-for="item in news" :key="item.path" class="group w-full h-96 rounded-lg relative">
         <NuxtLink :to="item.path">
