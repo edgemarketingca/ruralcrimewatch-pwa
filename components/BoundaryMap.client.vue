@@ -1099,7 +1099,9 @@ body {
   margin-left: 20px;
 }
 
-a {
+/*
+  a {
   color: #877200;
 }
+*/
 </style>
