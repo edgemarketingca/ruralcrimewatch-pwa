@@ -25,9 +25,14 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-icon',
+    'nuxt-gtag',
    // 'nuxt-security',
   ],
-
+  
+  gtag: {
+    id: 'G-VPRLB74ECH'
+  },
+    
   /*
   security: {
     nonce: true, // Enables HTML nonce support in SSR mode
