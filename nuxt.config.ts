@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@vueuse/nuxt',
     'nuxt-icon',
-    'nuxt-gtag',
+    '@nuxtjs/nuxt-gtag',
    // 'nuxt-security',
   ],
   
