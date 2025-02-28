@@ -54,7 +54,7 @@ export default defineNuxtConfig({
         sendHitTask: true
       }
       : {}
-  }
+  },
   loadingIndicator: {
     name: '~/composables/loading.html',
     img: '/icons/192.png'
