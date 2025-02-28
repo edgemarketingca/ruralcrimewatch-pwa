@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     keepalive: true,
   },
   
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxthq/studio', '@nuxt/content', '@vueuse/nuxt', 'nuxt-icon', 'nuxt-gtag', '@nuxtjs/google-analytics'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxthq/studio', '@nuxt/content', '@vueuse/nuxt', 'nuxt-icon', 'nuxt-gtag'],
   
   tailwindcss: {
     configPath: 'tailwind.config.ts',
@@ -45,9 +45,7 @@ export default defineNuxtConfig({
   gtag: {
     id: 'G-VPRLB74ECH',
   },
-  googleAnalytics: {
-    id: 'G-VPRLB74ECH', 
-  },
+  
   loadingIndicator: {
     name: '~/composables/loading.html',
     img: '/icons/192.png'
