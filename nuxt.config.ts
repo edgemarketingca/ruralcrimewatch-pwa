@@ -7,7 +7,7 @@ export default defineNuxtConfig({
         { name: 'robots', content: 'index, follow' },
       ], 
       
-      link: [
+      link: [ 
         { rel: 'favicon', href: '/favicon.ico' },
         { rel: 'manifest', href: '/manifest.json' },
         { rel: 'stylesheet', href: '/appstyles.css' },
@@ -47,13 +47,6 @@ export default defineNuxtConfig({
   },
   googleAnalytics: {
     id: 'G-VPRLB74ECH', 
-    dev: testingAnalytics ? true : process.env.NODE_ENV !== 'production',
-    debug: testingAnalytics
-      ? {
-        enabled: true,
-        sendHitTask: true
-      }
-      : {}
   },
   loadingIndicator: {
     name: '~/composables/loading.html',
