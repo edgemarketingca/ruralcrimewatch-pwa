@@ -17,24 +17,8 @@ export default defineNuxtConfig({
     keepalive: true,
   },
   
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    // '@vite-pwa/nuxt',
-    '@nuxthq/studio',
-    '@nuxt/content',
-    '@vueuse/nuxt',
-    'nuxt-icon',
-   // '@nuxtjs/nuxt-gtag',
-   // 'nuxt-security',
-  ],
-  
-  /* 
-  gtag: {
-    id: 'G-VPRLB74ECH'
-  },
-  */
-  
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/color-mode', '@nuxthq/studio', '@nuxt/content', '@vueuse/nuxt', 'nuxt-icon', 'nuxt-gtag'],
+
   /*
   security: {
     nonce: true, // Enables HTML nonce support in SSR mode
@@ -90,6 +74,10 @@ export default defineNuxtConfig({
 
   icon: {
     size: '1.3rem',
+  },
+
+  gtag: {
+    id: 'G-VPRLB74ECH',
   },
 
   loadingIndicator: {
