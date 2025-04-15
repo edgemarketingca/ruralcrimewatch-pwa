@@ -20,8 +20,8 @@ function getThumbnail(item: {} | undefined) {
 
     <main class="">  
     <div class="top-4 flex justify-center items-center bg-primary p-2 rounded-lg mb-6">
-      <NuxtLink title="Report Suspicous Activity" class="p-2" to="tel:1-833-547-7283">
-         <span class="font-bold text-l justify-center items-center text-black">Call to report suspicious activity in Alberta :: 1-833-547-RAVE</span>
+      <NuxtLink title="Report Suspicous Activity" class="p-2" to="tel:310-7267">
+         <span class="font-bold text-l justify-center items-center text-black">Report suspicious activity in Alberta :: Call 310-RCMP (7267)</span>
       </NuxtLink>
     </div>
     </main>
