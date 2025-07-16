@@ -2,7 +2,7 @@
 import { version } from '~/package.json'
 </script>
 
-<template>
+<template> 
   <main class="dark:text-white">
     <h2 class="text-3xl text-primary">
       Overview
