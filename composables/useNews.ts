@@ -39,9 +39,13 @@ export async function useNews() {
 
 export async function useNewsList() {
 
+  const now = new Date();
   const { data: newslist, pendinglist, errorlist } = await useFetch('/api/pages', {
     method: 'POST',
-    transform: (data) => data.filter((page: any) => page.path.includes('/news/articles/')).slice(0,30)
+    //transform: (data) => data.filter((page: any) => page.path.includes('/news/articles/')).slice(0,30)
+    transform: (data) => {
+      return data.filter((page: any) => (page.path.includes('/news/articles/'))).filter((page: any) => (new Date(page.version.data.date_public) < now)).slice(0, 30)
+    }
   })
 
   return {
