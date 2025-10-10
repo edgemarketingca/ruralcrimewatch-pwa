@@ -3,9 +3,13 @@ import type { Article, Channel, NewsRSS } from '~/types'
 
 export async function useNews() {
 
+  const now = new Date();
   const { data: news, pending, error } = await useFetch('/api/pages', {
     method: 'POST',
-    transform: (data) => data.filter((page: any) => page.path.includes('/news/articles/')).slice(0,10)
+    //transform: (data) => data.filter((page: any) => page.path.includes('/news/articles/')).slice(0,10)
+    transform: (data) => {
+      return data.filter((page: any) => (page.path.includes('/news/articles/'))).filter((page: any) => (new Date(page.version.data.date_public) < now)).slice(0, 30)
+    }
   })
 
   // const { data: news, pending, error } = await useFetch('https://www.ruralcrimewatch.ab.ca/rss/bulletinboard', {
