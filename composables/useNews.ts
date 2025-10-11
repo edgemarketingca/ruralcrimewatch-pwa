@@ -8,7 +8,7 @@ export async function useNews() {
     method: 'POST',
     //transform: (data) => data.filter((page: any) => page.path.includes('/news/articles/')).slice(0,10)
     transform: (data) => {
-      return data.filter((page: any) => (page.path.includes('/news/articles/'))).filter((page: any) => (new Date(page.version.data.date_public) < now)).slice(0, 30)
+      return data.filter((page: any) => (page.path.includes('/news/articles/'))).filter((page: any) => (new Date(page.version.data.date_public) < now)).slice(0, 10)
     }
   })
 
