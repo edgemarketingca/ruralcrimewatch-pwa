@@ -36,6 +36,13 @@ export const menu: Menu[] = [
     target: '_blank',
     _path: 'https://ocre-sielc.rcmp-grc.gc.ca/alberta',
   },
+  {
+    title: 'Level Up with Jamie',
+    metatitle: 'Level Up with Jamie',
+    icon: 'ph:chats-circle-duotone',
+    target: '_blank',
+    _path: 'https://www.levelupwithjamie.ca',
+  },
 ]
 
 export const mobileMenu: Menu[] = [
